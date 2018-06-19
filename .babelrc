@@ -1,0 +1,31 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["last 2 versions"]
+      },
+      "exclude": ["transform-regenerator", "transform-async-to-generator"]
+    }]
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-react-jsx", {"pragma": "h"}],
+    ["@babel/plugin-proposal-object-rest-spread"],
+    ["transform-react-remove-prop-types"],
+    ["syntax-dynamic-import"],
+    ["module:fast-async", {
+      "compiler": {
+        "promises": true,
+        "generators": false
+      },
+      "runtimePattern": "home.js",
+      "spec": true
+    }],
+    ["transform-imports", {
+      "react-router": {
+        "transform": "react-router/${member}",
+        "preventFullImport": true
+      }
+    }]
+  ]
+}

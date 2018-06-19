@@ -1,0 +1,7 @@
+node_modules
+stats.json
+dist
+test/__snapshots__
+/*.log
+.DS_STORE
+.env

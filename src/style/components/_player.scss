@@ -1,0 +1,183 @@
+.player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $background;
+  overflow: hidden;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1), transform 0.5s cubic-bezier(0, 0, 0.3, 1);
+  backface-visibility: hidden;
+  /* mémoire consommée par will-change trop importante dans Firefox */
+  /*will-change: transform, opacity;*/
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: url(/assets/svg/close.svg) no-repeat no-repeat;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__chromecast {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+  }
+
+  &__cover-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  &__artwork {
+    max-width: 300px;
+  }
+
+  &__infos-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  &__infos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__artist {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  &__add-to-playlist {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+  }
+
+  &__progress-and-controls-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* prevent focus on time when moving progress-bar */
+    user-select: none;
+  }
+
+  &__progress-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    max-width: 800px;
+    margin: 5px 0;
+  }
+
+  &__volume-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+  }
+
+  &__current-time {
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  &__total-time {
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__centers-controls, &__outside-controls {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+  }
+
+  &__centers-controls {
+    margin: 0 5px;
+    opacity: 0.9;
+    transition: 0.1s opacity linear;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__outside-controls {
+    margin: 0 10px;
+    opacity: 0.9;
+    transition: 0.1s opacity linear;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__volume-mute {
+    background: url(/assets/svg/volume-mute.svg) no-repeat no-repeat center;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+  }
+
+  &__volume-max {
+    background: url(/assets/svg/volume-max.svg) no-repeat no-repeat center;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,25 @@
+.progress-round {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    fill: #FFF;
+    font-size: 9px;
+    text-anchor: middle;
+    alignment-baseline: central;
+  }
+
+  &__circle--pattern {
+    stroke: #E5E5E5;
+    stroke-width: 3;
+    fill: none;
+    opacity: 0.5;
+  }
+
+  &__circle--progress {
+    stroke: #FFF;
+    stroke-width: 3;
+    transition: stroke-dashoffset .1s linear;
+  }
+}

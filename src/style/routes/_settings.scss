@@ -1,0 +1,42 @@
+.settings {
+  display: grid;
+  //display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    //flex: 1;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-self: center;
+    margin: 10px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background: #696969;
+    color: #FFF;
+
+    @media (max-width: $mobile) {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}

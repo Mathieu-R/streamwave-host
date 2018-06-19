@@ -1,0 +1,12 @@
+/auth => accueil pour se connecter
+/auth/login => login
+/auth/register => register
+/auth/forgot => recevoir e-mail de changement du mot de passe
+/auth/reset => changer le mot de passe
+
+/ => home (bibliothèque)
+/playlists => playlists
+/listening => écoute en cours
+/album/:album-slug => album en particulier
+/search => recherche
+/settings => paramètres

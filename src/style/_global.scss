@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 500;
+  height: 100vh;
+  @media screen and (max-width: $mobile) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  color: #FFF;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+button[disabled] {
+  opacity: 0.7;
+}
+
+select {
+  outline: none;
+}
+
+input[type="email"], input[type="password"] {
+  height: 55px;
+  font-size: 16px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+::placeholder {
+  color: #FFF;
+  opacity: 0.5;
+}
+
+.app {
+  min-height: 100vh;
+  background: $background;
+}
+
+/* class for lazy-loaded images */
+.cover__artwork.lazy {
+  opacity: 0;
+}
+
+.progress-bar .highlight-round,
+.range .highlight-round {
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1);
+}
+
+.range .highlight-round {
+  transform: translateY(-50%) scale(1);
+}
+
+.overlay.overlay--visible {
+  pointer-events: auto;
+  &::before {
+    opacity: 1;
+  }
+}
+
+.cover__link.cover--disabled {
+  opacity: 0.5;
+  filter: grayscale(5);
+  pointer-events: none;
+  cursor: default;
+}
+
+.ripple {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(50%, -50%) scale(0.01);
+  opacity: 0.5;
+  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  will-change: transform;
+}
+
+.ripple.expanded {
+  transform: translate(50%, -50%) scale(1);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

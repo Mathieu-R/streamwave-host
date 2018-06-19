@@ -1,0 +1,22 @@
+.fade {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 50px;
+  padding: 10px 0;
+
+  &__label {
+    margin-bottom: 10px;
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+  }
+
+  &__range-bound {
+    display: flex;
+    padding: 0 10px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,32 @@
+notifications:
+  email: false
+sudo: required
+language: node_js
+dist: trusty
+node_js:
+  - stable
+addons:
+ chrome: stable
+cache:
+  directories:
+    - node_modules
+addons:
+  ssh_known_hosts: vps506664.ovh.net
+install:
+  - npm install
+before_install:
+  - openssl aes-256-cbc -K $encrypted_e01d503bebb6_key -iv $encrypted_e01d503bebb6_iv -in .travis/travis_deploy.enc -out /tmp/travis_deploy -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/travis_deploy
+  - ssh-add /tmp/travis_deploy
+before_script:
+  # - npm install -g https://github.com/ebidel/lighthouse-ci
+  # deploy on staging server
+  # - "./.travis/deploy-pr.sh"
+script:
+  # test build for bundlesize
+  - npm run build
+  - npm run bundlesize
+after_success:
+  # run lightouse-ci against staging server
+  # - lighthouse-ci --score=85 staging.streamwave.be

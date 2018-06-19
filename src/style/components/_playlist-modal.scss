@@ -1,0 +1,119 @@
+.playlist-modal {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  background: #000;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.7);
+  transition: opacity .2s cubic-bezier(0, 0, 0.3, 1), .3s transform cubic-bezier(0, 0, 0.3, 1);
+  will-change: opacity, transform;
+
+  &--visible {
+    opacity: 1;
+    transform: translate(-50%) scale(1);
+  }
+
+  &__create-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 70px;
+  }
+
+  &__create-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    color: #000;
+    flex-grow: 1;
+    margin: 10px;
+  }
+
+  &__create-input-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #FFF;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 10px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s cubic-bezier(0, 0, 0.3, 1);
+    will-change: opacity;
+
+    &--visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__create-back {
+    background: url(/assets/svg/arrow-black.svg) no-repeat no-repeat;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__create-input {
+    font-size: 100%;
+    padding-left: 5px;
+    border: none;
+    flex-grow: 1;
+    outline: none;
+  }
+
+  &__playlists {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+  }
+
+  &__playlist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: inherit;
+    color: #FFF;
+
+    &:hover, &:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__tracks-counter {
+      font-size: 12px;
+    }
+  }
+
+  &__cancel {
+    width: 100%;
+    min-height: 50px;
+    background: #3F51B5;
+    font-size: 16px;
+    color: #FFF;
+    border: none;
+    border-radius: 3px;
+    margin: 5px 10px;
+    padding: 15px;
+  }
+}

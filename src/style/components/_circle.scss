@@ -1,0 +1,20 @@
+.average-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 0 auto;
+
+  &__canvas-container {
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 90%;
+  }
+
+  &__reset {
+    background: rgba(158, 158, 158, 0.4);
+    padding: 10px 15px;
+    margin: 5px;
+  }
+}

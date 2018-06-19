@@ -1,0 +1,56 @@
+.container, .container-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-column {
+  flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: $mobile;
+  margin: 0 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: $mobile;
+  margin: 0 15px;
+}
+
+.form-button {
+  font-size: 20px;
+  height: 55px;
+  background: $auth-background;
+  margin-top: 17px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 17px 0;
+}
+
+.link-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 2px;
+}

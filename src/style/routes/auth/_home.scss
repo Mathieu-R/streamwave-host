@@ -1,0 +1,65 @@
+.auth-home {
+  &__welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 270px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 36px;
+    text-align: center;
+
+    &::after {
+      content: '';
+      display: flex;
+      height: 1px;
+      background: #FFF;
+      border: none;
+    }
+  }
+
+  &__subtitle {
+    color: $welcome-subtitle-color;
+    font-size: 12px;
+    text-align: center;
+    margin: 2px 0;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__login-button, &__register-button, &__google-button {
+    height: 55px;
+    width: 100%;
+    margin: 17px 0;
+    border-radius: 27px;
+  }
+
+  &__login-button, &__register-button {
+    background: $auth-button-background;
+  }
+
+  &__google-button {
+    background: $google-button-background;
+  }
+
+  &__auth-link {
+    color: #FFF;
+    font-size: 18px;
+    /* fix: <a> does not take height of the button parent if firefox */
+    height: 55px;
+  }
+
+  &__password-reset-link {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #FFF;
+    text-align: center;
+  }
+}

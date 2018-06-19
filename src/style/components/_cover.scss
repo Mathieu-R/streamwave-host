@@ -1,0 +1,52 @@
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation: fade linear 1s;
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #FFF;
+    margin-bottom: 10px;
+  }
+
+  &__artwork-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    /* background as placeholder (primary-color) */
+    /* injected through inline-style */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s cubic-bezier(0, 0, 0.3, 1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__artwork {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  &__infos-container {
+    height: 50px;
+    margin-top: 10px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__artist {
+    text-align: center;
+    font-size: 14px;
+  }
+}

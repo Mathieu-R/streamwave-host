@@ -1,0 +1,107 @@
+$range-height: 5px;
+
+.range {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    opacity: 0;
+    /*transform: translateY(-50%);*/
+  }
+
+  &__ui-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /* important to make round container vertical centered */
+    /* which means that round head can be on the progress bar */
+    /* and not outside */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  &__track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: $range-height;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background: $slider-background;
+  }
+
+  &__track-used {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: $range-height;
+    background: #FFF;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: 0 50%;
+    will-change: transform;
+  }
+
+  &__round-container {
+    position: relative;
+    width: 100%;
+    background: 0 0;
+    border: none;
+    outline: none;
+  }
+
+  &__round {
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    height: 15px;
+    width: 15px;
+    outline: 0;
+    border-radius: 50%;
+    background: #FFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%) scale(0.8);
+    transition: transform .2s cubic-bezier(0, 0, 0.3, 1);
+  }
+
+  &__tooltip {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: -10px;
+    height: 20px;
+    width: 40px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFF;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.2);
+    transition: transform .2s cubic-bezier(0, 0, 0.3, 1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+
+    &--visible {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--active {
+      opacity: 1;
+      transform: translateY(-170%) scale(1);
+    }
+  }
+}

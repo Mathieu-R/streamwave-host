@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $navbar-height;
+  width: 100%;
+  max-width: 500px;
+  background: $navbar-background;
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background: none;
+    border-radius: none;
+  }
+
+  &__icon {
+    height: 25px;
+    width: 25px;
+  }
+
+  &__icon-title {
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+
+  &__link, .active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .active g, .active svg {
+    fill: #03A9F4;
+  }
+
+  .active &__icon-title {
+    color: #03A9F4;
+  }
+}

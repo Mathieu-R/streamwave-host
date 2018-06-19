@@ -1,0 +1,73 @@
+.mini-player {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: $mini-player-height;
+  width: 100%;
+  max-width: 500px;
+  background: $mini-player-background;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+  will-change: opacity;
+
+  &__progress-container {
+    position: absolute;
+    top: -$progress-bar-height;
+    width: 100%;
+    left: 0;
+    height: $progress-bar-height;
+  }
+
+  &__cover-container {
+    height: 100%;
+    margin-right: 10px;
+  }
+
+  &__cover-artwork {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  &__infos-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__artist {
+    font-size: 12px;
+  }
+
+  &__title {
+    font-size: 14px;
+
+    @media(max-width: $mobile) {
+      font-size: 12px;
+    }
+  }
+
+  &__controls-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    padding: 0 10px;
+  }
+
+  &__chromecast-button {
+    height: 35px;
+    width: 55px;
+    --connected-color: #FFF;
+    --disconnected-color: #FFF;
+  }
+}
