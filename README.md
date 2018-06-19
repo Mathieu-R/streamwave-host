@@ -1,43 +1,34 @@
-[![Build Status](https://travis-ci.org/Mathieu-R/streamwave.svg?branch=master)](https://travis-ci.org/Mathieu-R/streamwave)
-[![dependencies Status](https://david-dm.org/Mathieu-R/streamwave/status.svg)](https://david-dm.org/Mathieu-R/streamwave)
+[![Build Status](https://travis-ci.org/Mathieu-R/streamwave-host.svg?branch=master)](https://travis-ci.org/Mathieu-R/streamwave-host)
+[![dependencies Status](https://david-dm.org/Mathieu-R/streamwave-host/status.svg)](https://david-dm.org/Mathieu-R/streamwave-host)
 
-# streamwave
-TFE bachelor degree (EPHEC). Music Streaming PWA with great user experience. Mobile first.
+### streamwave
+Improvement of streamwave (https://github.com/Mathieu-R/streamwave).     
+A project realised in context of TFE.    
+It was basically an Adaptive Music Streaming PWA.    
+This improvement allows you to easily host that product on your own server at your home.    
+You can upload your own music and make it available on all your devices.    
 
-# Goals
+### Features
 - [X] Adaptive Streaming + Range Request  
 - [X] DASH + HLS (Mobile Safari)   
 - [X] Shaka player   
-- [X] Preact    
 - [X] NodeJS    
 - [X] Basic auth + Google Oauth2     
 - [X] Credential Management API    
-- [X] Presentation API (Chromecast)    
-    https://github.com/w3c/presentation-api/issues/448#issuecomment-387071162   
-    https://github.com/w3c/remote-playback/issues/117    
-    https://bugs.chromium.org/p/chromium/issues/detail?id=843965    
-    https://github.com/w3c/presentation-api/issues/450#issuecomment-390948883    
+- [X] Chromecast   
 - [X] Media Session API    
 - [X] Service Worker    
 - [X] Background Fetch    
-    https://bugs.chromium.org/p/chromium/issues/detail?id=825878     
 - [X] Background Sync     
-- [X] Median Cut 
+- [X] Median Cut    
 - [X] Track data volume    
-    https://github.com/google/shaka-player/issues/1416    
-    https://github.com/google/shaka-player/issues/1439    
-    https://github.com/google/shaka-player/issues/1439     
-- [X] Upload your own music
+- [X] Upload your own music   
 
 ### Notes
 Background Fetch : 
 I noticed that Background Fetch works in chrome canary with `experimental web platform features` flag on `(chrome://flags)`.
 
 ### Usage
-
-You need these 2 API to make the app work.
-- https://github.com/Mathieu-R/streamwave-auth
-- https://github.com/Mathieu-R/streamwave-library
 
 In order to use the chromecast feature you need the receiver
 - https://github.com/Mathieu-R/streamwave-presentation
@@ -49,7 +40,32 @@ npm install && npm run start
 
 > Host on your own server
 ```
-npm install && npm run build
+npm install && npm run build && npm run serve
 ```
 
-Once it is done, you can serve the `dist` folder (ex: with nginx, apache,...).
+> You need some stuff on your server
+- MongoDB
+- Redis
+
+> You need to set some environment variables
+
+`DBURL`: mongo db connection string (https://docs.mongodb.com/manual/reference/connection-string/)
+
+Some credentials for Google Oauth2 : https://console.cloud.google.com/apis/credentials => Create credentials => `id client oauth` + autorize your app domain and your callback url.    
+
+`GOOGLEID`: google oauth2 client id.   
+`GOOGLESECRET`: google oauth2 secret.    
+`GOOGLECALLBACKPROD`: google oauth2 callback.    
+
+`REDIS_PASSWORD`: strong secret for Redis.    
+`MAIL_HOST_PROD`: host url for mail (ex: smtp.example.com).    
+`MAIL_PORT_PROD`: smtp port for mail.    
+`MAIL_USER_PROD` and `MAIL_PASSWORD_PROD`: credentials of the email that will send the emails (account verification, password forgotten,...).    
+
+### Caveats
+> In developpement
+- You need `maildev` to catch mails.
+
+`MAIL_HOST_DEV`: host url for mail (ex: localhost).    
+`MAIL_PORT_DEV`: smtp port for mail (ex: 1025 for maildev).    
+

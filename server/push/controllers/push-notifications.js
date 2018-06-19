@@ -1,5 +1,5 @@
 const webpush = require('web-push');
-const { get, set, del } = require('../datastore');
+const { get, set, del } = require('../..datastore');
 
 function getVapidKeys (req, res) {
   // send public key to user

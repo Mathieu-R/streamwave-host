@@ -1,6 +1,7 @@
 node_modules
 stats.json
 dist
+server/library/upload
 test/__snapshots__
 /*.log
 .DS_STORE

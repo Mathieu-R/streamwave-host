@@ -1,4 +1,4 @@
-const mongoose = require('../mongoose');
+const mongoose = require('../../mongoose');
 const {TrackSchema} = require('./Track')
 const ObjectID = mongoose.Schema.Types.ObjectId;
 
