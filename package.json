@@ -1,6 +1,6 @@
 {
-  "name": "streamwave",
-  "version": "1.0.0-0",
+  "name": "streamwave-host",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "rollup -wc build/rollup.config.js",
