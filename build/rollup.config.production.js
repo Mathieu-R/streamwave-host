@@ -6,13 +6,16 @@ import progress from 'rollup-plugin-progress';
 import cleanup from 'rollup-plugin-cleanup'; // production
 
 export default {
-  input: 'scripts/app.js',
+  input: 'src/index.js',
   output: {
-    file: 'static/scripts/bundle.js',
+    file: 'dist/scripts/bundle.js',
     format: 'cjs',
     sourceMap: false
   },
   plugins: [
+    replace({
+      ENVIRONMENT: JSON.stringify('production')
+    }),
     cleanup(),
     resolve(),
     commonjs(),

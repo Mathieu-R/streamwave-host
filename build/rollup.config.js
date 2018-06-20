@@ -3,15 +3,19 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import filesize from 'rollup-plugin-filesize';
 import progress from 'rollup-plugin-progress';
+import replace from 'rollup-plugin-replace'
 
 export default {
-  input: 'scripts/app.js',
+  input: 'src/index.js',
   output: {
-    file: 'static/scripts/bundle.js',
+    file: 'dist/scripts/bundle.js',
     format: 'cjs',
     sourceMap: true
   },
   plugins: [
+    replace({
+      ENVIRONMENT: JSON.stringify('development')
+    }),
     resolve(),
     commonjs(),
     babel({

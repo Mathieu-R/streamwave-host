@@ -6,14 +6,14 @@ const app = express();
 const router = express.Router();
 const adaro = require('adaro');
 
-const templatePath = path.join(__dirname, '..', '..');
+const templatePath = path.join(__dirname, '../../src');
 const production = process.env.NODE_ENV === 'production';
 
 const options = {
   cache: production ? true : false,
   whitespace: true,
   helpers: [
-    require('../../helpers/add-hash')
+    require('../helpers/add-hash')
   ]
 };
 
@@ -26,7 +26,7 @@ app.set('views', templatePath);
 
 app.use('../middlewares/no-cache');
 
-app.get('*', (req, res) => {
+app.get('service-worker.js', (req, res) => {
   res.set({'Content-Type': 'application/javascript'});
   res.status(200).render('service-worker', {
     version

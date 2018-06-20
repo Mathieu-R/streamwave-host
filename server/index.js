@@ -7,7 +7,7 @@ const serveStatic = require('serve-static');
 const compression = require('compression');
 const express = require('express');
 const dotenv = require('dotenv').config();
-const removeHash = require('../middlewares/remove-hash');
+const removeHash = require('./middlewares/remove-hash');
 
 const app = express();
 const server = http.createServer(app);

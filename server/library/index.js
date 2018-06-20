@@ -49,3 +49,5 @@ router.post('/playlist/:playlistId', jwt, addTrackToPlaylist);
 router.delete('/playlist/:playlistId/:trackId', jwt, removeTrackFromPlaylist);
 
 router.post('/album/upload', jwt, upload.array('musics'), uploadMusic);
+
+module.exports = app;

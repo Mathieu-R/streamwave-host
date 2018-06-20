@@ -66,3 +66,5 @@ app.use(router);
 server.listen(PORT, () => {
   console.log(`Node server listening on https://localhost:${PORT}`);
 });
+
+module.exports = app;

@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/Mathieu-R/streamwave-host.svg?branch=master)](https://travis-ci.org/Mathieu-R/streamwave-host)
 [![dependencies Status](https://david-dm.org/Mathieu-R/streamwave-host/status.svg)](https://david-dm.org/Mathieu-R/streamwave-host)
 
-### streamwave
+## streamwave-host
 Improvement of streamwave (https://github.com/Mathieu-R/streamwave).     
 A project realised in context of TFE.    
 It was basically an Adaptive Music Streaming PWA.    

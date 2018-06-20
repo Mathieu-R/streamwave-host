@@ -6,7 +6,12 @@ const app = express();
 const production = process.env.NODE_ENV === 'production';
 const staticPath = path.join(__dirname, '../../dist');
 const templatePath = path.join(__dirname, '../../src/templates');
-const inlineStyle = fs.readFileSync(path.join(__dirname, '../../dist/css/inline.css'), 'utf-8');
+let inlineStyle = null;
+
+// only inline style in production
+if (production) {
+  inlineStyle = fs.readFileSync(path.join(__dirname, '../../dist/css/inline.css'), 'utf-8');
+}
 
 const options = {
   cache: production ? true : false,
@@ -35,3 +40,5 @@ app.set('views', templatePath);
 app.get('/', (req, res) => {
   // stuff
 });
+
+module.exports = app;

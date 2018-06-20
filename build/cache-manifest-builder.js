@@ -18,7 +18,8 @@ const routes = [
   '/demo',
   new RegExp('/auth/'),
   new RegExp('/album/'),
-  new RegExp('/playlist/')
+  new RegExp('/playlist/'),
+  'https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.4.1/shaka-player.compiled.js'
 ];
 
 const getResourcesList = () => {

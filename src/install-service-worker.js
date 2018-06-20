@@ -16,7 +16,7 @@ import {
 
 export default (store) => {
   if (Constants.PRODUCTION && Constants.SUPPORT_SERVICE_WORKER) {
-    navigator.serviceWorker.register('/sw.js', {scope: '/'}).then(registration => {
+    navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(registration => {
       if (Constants.SUPPORT_PUSH_NOTIFICATIONS) {
         const pusher = new Pusher();
         pusher.init();
