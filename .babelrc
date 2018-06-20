@@ -9,23 +9,14 @@
     }]
   ],
   "plugins": [
-    ["@babel/plugin-transform-react-jsx", {"pragma": "h"}],
     ["@babel/plugin-proposal-object-rest-spread"],
-    ["transform-react-remove-prop-types"],
-    ["syntax-dynamic-import"],
     ["module:fast-async", {
       "compiler": {
         "promises": true,
         "generators": false
       },
-      "runtimePattern": "home.js",
+      "runtimePattern": "index.js",
       "spec": true
-    }],
-    ["transform-imports", {
-      "react-router": {
-        "transform": "react-router/${member}",
-        "preventFullImport": true
-      }
     }]
   ]
 }

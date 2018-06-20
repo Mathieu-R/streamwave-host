@@ -1,0 +1,7 @@
+<div class="progress-bar">
+  <div class="progress-bar__track"></div>
+  <div class="progress-bar__track-used"></div>
+  <div class="progress-bar__round-container">
+    <div class="progress-bar__round"></div>
+  </div>
+</div>

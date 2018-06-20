@@ -1,0 +1,21 @@
+<div class="overlay">
+  <aside class="side-nav">
+    <div class="side-nav__hamburger-container">
+      <button class="side-nav__hamburger" aria-label="hide sidenav"></button>
+    </div>
+    <div class="side-nav__user">
+      <img class="side-nav__avatar" src={user.avatar} alt="avatar" />
+      <div class="side-nav__infos">
+        <p class="side-nav__username">{user.username}</p>
+        <p class="side-nav__mail">{?user.email}{user.email}{/user.email}}</p>
+      </div>
+    </div>
+    <ul class="side-nav__menu">
+      <li class="side-nav__element"><a class="side-nav__link" href="/" aria-label="home">Home</a></li>
+      <li class="side-nav__element"><a class="side-nav__link" href="/about" aria-label="about">A propos</a></li>
+      <li class="side-nav__element"><a class="side-nav__link" href="/licences" aria-label="licences">Licenses musicales</a></li>
+      <li class="side-nav__element"><a class="side-nav__link" href="/upload" aria-label="upload music albums">Importer ma musique</a></li>
+      <li class="side-nav__element"><a class="side-nav__link" href="/demo" aria-label="demo streaming">Demo</a></li>
+    </ul>
+  </aside>
+</div>

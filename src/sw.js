@@ -2,7 +2,7 @@ importScripts("/third_party/idb-keyval.min.js");
 importScripts('/cache-manifest.js');
 
 const CACHENAME = 'static';
-const VERSION = '1';
+const VERSION = '{version}';
 const CACHE_MANIFEST_NAME = `${CACHENAME}-v${VERSION}`;
 const MUSIC_CACHE_NAME = 'streamwave-music-cache';
 

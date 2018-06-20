@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="wrapper">
+    <section class="auth-home__welcome">
+      <h1 class="auth-home__title">Streamwave</h1>
+      <span class="auth-home__subtitle">streaming music pwa</span>
+    </section>
+    <section class="auth-home__buttons">
+      <button class="auth-home__login-button" aria-label="go to login page">
+        <Link class="link-button auth-home__auth-link" to="/auth/login">
+          Se connecter
+        </Link>
+      </button>
+      <button class="auth-home__register-button" aria-label="go to register page">
+        <Link class="link-button auth-home__auth-link" to="/auth/register">
+          Créer un compte
+        </Link>
+      </button>
+      <button class="auth-home__google-button" onClick={this.googleLogin} aria-label="login with your google account">
+        Continuer avec google
+      </button>
+      <Link class="link-button auth-home__password-reset-link" to="/auth/forgot" aria-label="go to password reset page">
+        Mot de passe oublié ?
+      </Link>
+    </section>
+  </div>
+</div>

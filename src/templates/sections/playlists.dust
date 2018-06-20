@@ -1,0 +1,13 @@
+<div class="playlists">
+  <section class="playlists__wrapper">
+    {#playlists}
+      <a class="playlists__link" href="/playlist/{_id}">
+        <div class="playlists__playlist">
+          <span class="playlists__title">{title}</span>
+          <span class="playlists__tracks-counter">{numberOfTracks} {'titre'|pluralize}</span>
+          <button class="playlists__remove" data-id={_id} ></button>
+        </div>
+      </a>
+    {/playlists}
+  </section>
+</div>

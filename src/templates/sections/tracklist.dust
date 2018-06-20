@@ -1,0 +1,41 @@
+<div class="tracklist">
+  <section class="tracklist__infos">
+    <div class="tracklist__infos-wrapper">
+      {?coverURL}
+        <img class="tracklist__cover" alt="cover" src="{cdn}/{coverURL}" />
+      {/coverURL}
+      <div class="tracklist__details">
+        <div class="tracklist__title">{title}</div>
+        <div class="tracklist__artist">{artist}</div>
+        <div class="tracklist__line">
+          <span class="tracklist__year">{?year}year{/year}{:else}année de parution inconnue</span>
+          •
+          <span class="tracklist__tracks-counter">{tracks.length|pluralize}</span>
+          •
+          <span class="tracklist__genre">{?genre}genre{/genre}{:else}genre inconnu</span>
+        </div>
+      </div>
+    </div>
+    <div class="tracklist__download">
+      <div class="tracklist__toggle-container">
+        {>"components/switch" class="switch-download" label="Télécharger" /}
+      </div>
+      <div class="progress-line">
+        <div class="progress-line__track"></div>
+        <div class="progress-line__track-used"></div>
+      </div>
+    </div>
+  </section>
+  <section class="tracklist__tracks">
+    {#tracks}
+      <div class="track" data-manifest="{manifest}">
+        <div class="track__number">{number}</div>
+        <div class="track__title">{title}</div>
+        <div class="track__duration">{duration|duration}</div>
+        {?type === 'playlist'}
+          <button class="track__remove"></button>
+        {/type}
+      </div>
+    {/tracks}
+  </section>
+</div>

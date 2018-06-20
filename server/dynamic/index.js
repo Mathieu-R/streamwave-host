@@ -4,21 +4,28 @@ const express = require('express');
 const app = express();
 
 const production = process.env.NODE_ENV === 'production';
-const staticPath = './static';
-const templatePath = './templates';
+const staticPath = path.join(__dirname, '../../dist');
+const templatePath = path.join(__dirname, '../../src/templates');
+const inlineStyle = fs.readFileSync(path.join(__dirname, '../../dist/css/inline.css'), 'utf-8');
 
 const options = {
   cache: production ? true : false,
   whitespace: production ? false : true,
   helpers: [
-    require('../../helpers/add-hash')
+    require('../helpers/add-hash')
+  ],
+  filters: [
+    require('../filters/duration'),
+    require('../filters/pluralize'),
+    require('../filters/rgbcss')
   ]
 };
 
 const viewOptions = {
-  title: 'Portfolio',
-  styles: [path.join(staticPath, 'styles', 'style.css')],
-  scripts: [path.join(staticPath, 'scripts', 'bundle.js')]
+  title: 'Streamwave',
+  styles: [path.join(staticPath, 'css/streamwave.css')],
+  inlineStyle,
+  scripts: [path.join(staticPath, 'scripts/bundle.js')]
 }
 
 app.engine('dust', adaro.dust(options));

@@ -48,11 +48,6 @@ export function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-// user-agent sniffing, yeah, sure !
-export function isMobile () {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
 export function crossFade (context, fade = 6) {
   const audio = this.audio.base;
 

@@ -1,0 +1,7 @@
+<div class="library">
+  <section class="library__inner">
+    {#library}
+    {>"components/cover" artist=artist title=title coverURL=coverURL primaryColor=primaryColor cdnurl=cdnurl id=_id /}
+    {/library}
+  </section>
+</div>

@@ -1,0 +1,28 @@
+<div class="upload">
+  <div class="upload__drag-drop">
+    <div class="upload__icon"></div>
+    <p class="upload__description">
+      Faites glisser les titres de votre albums
+      afin de les ajouter à votre catalogue musical.
+    </p>
+    <div>
+      <p class="upload__alternative">ou bien</p>
+      <div class="upload__button-container">
+        <button
+          class="upload__button"
+        >
+          Importer les fichiers
+        </button>
+        <input
+          class="upload__input"
+          type="file"
+          multiple
+        />
+      </div>
+    </div>
+    <div class="upload__progress-bar">
+      <div class="upload__progression-value"></div>
+      <div class="upload__progression-track"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="settings">
+  <div class="settings__container">
+    <div class="download-mobile-network">
+      {>"components/switch" class="switch-download-mobile-network" label="Télécharger à l'aide du réseau mobile" /}
+    </div>
+    <div class="notifications">
+      {>"components/switch" class="switch-notifications" label="Autoriser les notifications" /}
+      <p class="notifications__description">
+        exemple: être informé de l'ajout d'un album dans le catalogue
+      </p>
+    </div>
+    <div class="download-quality">
+      <label for="quality">Qualité de téléchargement</label>
+      <select  value="256">
+        <option value="128">128k</option>
+        <option value="192">192k</option>
+        <option value="256">256k</option>
+      </select>
+    </div>
+    <div class="storage">
+      <div class="storage__title">Stockage disponible</div>
+      <p class="storage__description">Le stockage disponible peut varier en fonction des implémentations</p>
+      <section class="storage__container">
+        <div class="storage__used"></div>
+      </section>
+      <section class="storage__infos">
+        <!-- <div class="storage__used-info">Utilisé • {usage}mb</div>
+        <div class="storage__quota-info">Disponible • {quota >= 1000 ? `${quota / 1000}gb` : `${quota}mb`}</div> -->
+      </section>
+    </div>
+    <div class="data-volume">
+      {>"components/switch" class="switch-data-volume" label="Volume de données maximale (mo)" /}
+      <div class="data-volume__range">
+        <span class="data-volume__bound">200mo</span>
+        {>"components/range" class="range-data-volume" min="200" max="2000" showTooltip="true" /}
+        <span class="data-volume__bound">2000mo</span>
+      </div>
+      {>"components/circle" /}
+    <div class="settings__buttons">
+      <button class="settings__button clear-cache-button" aria-label="clear cache">Vider le cache</button>
+      <button class="settings__button restore-settings-button" aria-label="restore settings">Restaurer</button>
+      <button class="settings__button logout-button" aria-label="logout">Déconnexion</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="overlay">
+  <div class="playlist-modal">
+    <section class="playlist-modal__create-container">
+      <button class="playlist-modal__create-button" aria-label="create playlist">Créer une nouvelle playlist</button>
+      <div class="playlist-modal__create-input-container">
+        <button class="playlist-modal__create-back" aria-label="cancel playlist creation"></button>
+        <input
+          class="playlist-modal__create-input"
+          type="text"
+          placeholder="Nom de la playlist..."
+        />
+      </div>
+    </section>
+    <section class="playlist-modal__playlists">
+    {#playlists}
+      <button class="playlist-modal__playlist" data-id={_id} aria-label="add to this playlist">
+        <span class="playlist-modal__playlist__title">{title}</span>
+        <span class="playlist-modal__playlist__tracks-counter">{numberOfTracks|pluralize}</span>
+      </button>
+    {/playlist}
+    </section>
+    <button class="playlist-modal__cancel">Annuler</button>
+  </div>
+</div>

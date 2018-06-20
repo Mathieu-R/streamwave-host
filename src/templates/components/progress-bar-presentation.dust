@@ -1,0 +1,6 @@
+<div class="progress-bar-presentation">
+  <div class="progress-bar-presentation__track"></div>
+  <div class="progress-bar-presentation__round-container">
+    <div class="progress-bar-presentation__round"></div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="top-bar">
+  <img class="top-bar__button" role="button" src="/static/assets/svg/hamburger.svg" alt="hamburger open menu" />
+  <div class="top-bar__title">
+    Streamwave
+  </div>
+  <div class="top-bar__cast-receiver">
+    <p class="top-bar__cast-receiver__description">Ecoute en cours sur</p>
+    <p class="top-bar__cast-receiver__name"></p>
+  </div>
+</div>

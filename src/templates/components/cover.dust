@@ -1,0 +1,11 @@
+<div class="cover">
+  <a href="/album/{id}" class="cover__link">
+    <section class="cover__artwork-container" style={background: {primaryColor|rgbcss}}>
+      <img data-src={cdnurl}/{coverURL} alt="cover artwork" class="cover__artwork lazy" />
+    </section>
+    <section class="cover__infos-container">
+      <div class="cover__title">{title}</div>
+      <div class="cover__artist">{artist}</div>
+    </section>
+  </a>
+</div>

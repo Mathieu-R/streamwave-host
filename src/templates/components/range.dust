@@ -1,0 +1,21 @@
+<div class="range {class}">
+  <input
+    type="range"
+    class="range__input"
+    min={min}
+    max={max}
+  />
+  <div class="range__ui-container">
+    <div class="range__track"></div>
+    <div class="range__track-used"></div>
+    <div class="range__round-container"></div>
+      <div class={
+        showToolTip ?
+        'range__tooltip range__tooltip--visible' :
+        'range__tooltip'
+      }>
+      </div>
+      <div class="range__round"></div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,6 @@
 const production = process.env.NODE_ENV === 'production';
 
 class Constants {
-  static get VERSION () {
-    return (
-      '1.0.0'
-    );
-  }
-
   static get PRODUCTION () {
     return process.env.NODE_ENV === 'production';
   }

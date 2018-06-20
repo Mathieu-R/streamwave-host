@@ -51,17 +51,6 @@ export default (store) => {
         }
       }
 
-      // let isReloading = false;
-      // navigator.serviceWorker.oncontrollerchange = evt => {
-      //   if (isReloading) {
-      //     return;
-      //   }
-
-      //   // refresh the page
-      //   window.location.reload();
-      //   isReloading = true;
-      // }
-
       navigator.serviceWorker.onmessage = event => {
         if (event.data.type === 'downloading') {
           // value is the bit that's been downloaded for a chunk

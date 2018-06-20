@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>{title}</title>
+  <meta charset="utf-8">
+  <meta name="author" content="Mathieu Rousseau">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <meta name="description" content="Musical streaming Progressive Web App including bleeding edge features." />
+  <meta name="theme-color" content="#000">
+
+  <link rel="manifest" href={@hash path="static/manifest.json"}{/hash}>
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://apis.google.com" crossorigin>
+  <link rel="preconnect" href="//www.gstatic.com" crossorigin>
+
+  <style>
+    {inlineStyle}
+  </style>
+
+  {#styles}
+    <link rel="stylesheet" href={@hash path=.}{/hash}>
+  {/styles}
+</head>
+
+<body>

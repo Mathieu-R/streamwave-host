@@ -1,0 +1,6 @@
+{>"partials/header" title=title style=style inlineStyle=inlineStyle /}
+<div class="app">
+  {+section/}
+  <div class="toast"></div>
+</div>
+{>"partials/footer" scripts=scripts /}
