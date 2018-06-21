@@ -3,8 +3,9 @@ const express = require('express');
 const multer = require('multer');
 const crypto = require('crypto');
 const mime = require('mime');
-const cors = require('cors');
-const url = require('url');
+
+const app = express();
+const router = express.Router();
 
 const { UPLOAD_PATH } = require('./utils');
 const storage = multer.diskStorage({
@@ -37,17 +38,17 @@ const {
   search
 } = require('./controllers/search');
 
-router.get('/library', jwt, getLibrary);
-router.get('/album/:id', jwt, getAlbum);
-router.get('/playlists', jwt, getUserAllPlaylists);
-router.get('/playlist/:id', jwt, getUserPlaylist);
-router.delete('/playlist/:id', jwt, removeUserPlaylist);
+router.get('/library', getLibrary);
+router.get('/album/:id', getAlbum);
+router.get('/playlists', getUserAllPlaylists);
+router.get('/playlist/:id', getUserPlaylist);
+router.delete('/playlist/:id', removeUserPlaylist);
 
-router.get('/search/:term', jwt, search);
-router.post('/playlist', jwt, addPlaylist);
-router.post('/playlist/:playlistId', jwt, addTrackToPlaylist);
-router.delete('/playlist/:playlistId/:trackId', jwt, removeTrackFromPlaylist);
+router.get('/search/:term', search);
+router.post('/playlist', addPlaylist);
+router.post('/playlist/:playlistId', addTrackToPlaylist);
+router.delete('/playlist/:playlistId/:trackId', removeTrackFromPlaylist);
 
-router.post('/album/upload', jwt, upload.array('musics'), uploadMusic);
+router.post('/album/upload', upload.array('musics'), uploadMusic);
 
 module.exports = app;

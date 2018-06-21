@@ -1,8 +1,6 @@
-// revoke token 
-// so we cannot use them when user is logout
-// even if they have not expired
+// remove session
 function logout(req, res) {
-  
+
 }
 
 module.exports = {

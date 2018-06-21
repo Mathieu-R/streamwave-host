@@ -24,7 +24,7 @@ app.engine('js', adaro.dust(options));
 app.set('view engine', 'js');
 app.set('views', templatePath);
 
-app.use('../middlewares/no-cache');
+app.use(require('../middlewares/no-cache'));
 
 app.get('service-worker.js', (req, res) => {
   res.set({'Content-Type': 'application/javascript'});

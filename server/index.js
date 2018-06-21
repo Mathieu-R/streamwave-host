@@ -26,10 +26,10 @@ router.use(bodyParser.json());
 router.use(compression());
 
 // static files
-router.use('/static', serveStatic(path.join(__dirname, '../dist')), staticOptions);
-router.use('/static/assets', serveStatic(path.join(__dirname, '../src/assets')), staticOptions);
+router.use('/static', serveStatic(path.join(__dirname, '../dist'), staticOptions));
 
 // routes
+router.get('/health', (req, res) => res.send('streamwave server is up.'));
 router.use('/auth', require('./auth'));
 router.use('/library', require('./library'));
 router.use('/push', require('./push'));

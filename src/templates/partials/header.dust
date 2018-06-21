@@ -8,17 +8,19 @@
   <meta name="description" content="Musical streaming Progressive Web App including bleeding edge features." />
   <meta name="theme-color" content="#000">
 
-  <link rel="manifest" href={@hash path="static/manifest.json"}{/hash}>
-  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href={@hash path="/static/manifest.json"}{/hash}>
+  <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon">
 
   <link rel="preconnect" href="https://apis.google.com" crossorigin>
   <link rel="preconnect" href="//www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
+  {?inlineStyle}
   <style>
     {inlineStyle}
   </style>
+  {/inlineStyle}
 
   {#styles}
     <link rel="stylesheet" href={@hash path=.}{/hash}>

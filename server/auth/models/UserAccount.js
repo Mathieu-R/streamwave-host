@@ -1,7 +1,5 @@
 const mongoose = require('../../mongoose');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const KEY = process.env.JWT_SECRET;
 
 const userAccountSchema = new mongoose.Schema({
   username: {type: String},
@@ -31,17 +29,6 @@ userAccountSchema.methods.verifyPassword = function (password) {
 
 userAccountSchema.methods.ensureEmailValidated = function () {
   return this.email_verification_token.validated;
-}
-
-userAccountSchema.methods.generateToken = function () {
-  return jwt.sign({
-    id: this._id.toString(),
-    username: this.username,
-    email: this.email,
-    avatar: this.avatar
-  }, KEY, {
-    expiresIn: '7days'
-  });
 }
 
 const UserAccount = mongoose.model('UserAccount', userAccountSchema);

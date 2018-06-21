@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const slugify = require('slugify');
 const mm = require('music-metadata');
 const sharp = require('sharp');
-const { push } = require('./push-notifications');
+const { push } = require('../../push/controllers/push-notifications');
 const { metadataObject, UPLOAD_PATH } = require('../utils');
 const { insertAlbumsByUser } = require('../seed');
 
@@ -16,7 +16,7 @@ const resolvePath = path.resolve;
 
 function getLibrary (req, res) {
   Album.find({owner: {$in: ['all', req.user.id]}})
-    .limit(10)
+    //.limit(10)
     .sort({created_at: -1})
     .then(albums => res.json(albums))
     .catch(err => console.error(err));

@@ -4,7 +4,7 @@
   "author": "https://github.com/Mathieu-R",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run watch-js\" \"npm run watch-css\" && npm run copy",
+    "start": "npm run build && npm run copy && concurrently \"npm run watch-js\" \"npm run watch-css\"",
     "server": "nodemon --inspect server/index.js",
     "clean-css": "node build/clean-css",
     "copy": "copy src/assets dist/assets && copy src/manifest.json dist/manifest.json",

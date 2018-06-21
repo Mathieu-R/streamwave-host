@@ -10,8 +10,8 @@ const {
 initPushService().catch(err => console.error(err));
 
 router.get('/push', getVapidKeys);
-router.post('/push/subscribe', jwt, subscribe);
-router.post('/push/unsubscribe', jwt, unsubscribe);
+router.post('/push/subscribe', subscribe);
+router.post('/push/unsubscribe', unsubscribe);
 
 app.use(router);
 

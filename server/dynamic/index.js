@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const app = express();
+const adaro = require('adaro');
 
 const production = process.env.NODE_ENV === 'production';
 const staticPath = path.join(__dirname, '../../dist');

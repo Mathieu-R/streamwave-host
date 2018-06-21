@@ -13,8 +13,6 @@ const TrackSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // references to playlist id
-  playlists: [ObjectID],
   // duration in second
   duration: {
     type: Number,

@@ -257,5 +257,6 @@ module.exports = {
   login,
   getResetToken,
   checkResetToken,
-  resetPassword
+  resetPassword,
+  me
 }
