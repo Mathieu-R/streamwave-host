@@ -11,7 +11,7 @@ let inlineStyle = null;
 
 // only inline style in production
 if (production) {
-  inlineStyle = fs.readFileSync(path.join(__dirname, '../../dist/css/inline.css'), 'utf-8');
+  inlineStyle = fs.readFileSync(path.join(staticPath, 'css/critical.css'), 'utf-8');
 }
 
 const options = {

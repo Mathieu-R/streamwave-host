@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 const cleanCSS = require('clean-css');
-const path = 'dist/css/streamwave.css';
-const inlinePath = 'dist/css/inline.css';
+const cssPath = path.join(__dirname, '../dist/css/streamwave.css');
+const inlinePath = path.join(__dirname, '../dist/css/critical.css');
 
-fs.writeFileSync(path, new cleanCSS().minify([path]).styles);
-fs.writeFileSync(inlinePath, new cleanCSS().minify([path]).styles);
+fs.writeFileSync(cssPath, new cleanCSS().minify([cssPath]).styles);
+fs.writeFileSync(inlinePath, new cleanCSS().minify([inlinePath]).styles);
