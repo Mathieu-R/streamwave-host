@@ -3,7 +3,7 @@
 {<section}
 <div class="container-column">
   {>"partials/topbar-back" /}
-  <form class="form">
+  <form class="form login-form">
     <div class="input-wrapper">
       <label class="label" for="email">E-mail</label>
       <input type="email" id="email" autocomplete="email"/>

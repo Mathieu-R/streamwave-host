@@ -2,7 +2,7 @@
 
 {<section}
 <div class="container">
-  <form class="form">
+  <form class="form reset-form">
     <div class="input-wrapper">
       <label class="label" for="password">Nouveau mot de passe</label>
       <input type="password" id="password" autocomplete="new-password"/>

@@ -7,7 +7,7 @@ import replace from 'rollup-plugin-replace';
 import cleanup from 'rollup-plugin-cleanup'; // production
 
 export default {
-  input: 'src/index.js',
+  input: 'src/scripts/index.js',
   output: {
     file: 'dist/scripts/bundle.js',
     format: 'cjs',

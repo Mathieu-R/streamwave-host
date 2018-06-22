@@ -14,7 +14,7 @@ if [ "${TRAVIS_TEST_RESULT}" = "1" ]; then
   exit
 fi
 
-if [[ "$TRAVIS_BRANCH" == "dev" ]]; then
+if [[ "$TRAVIS_BRANCH" == "master" ]]; then
   git config --global push.default simple
   git remote add deploy ssh://git@$IP:$PORT$DEPLOY_STAGING_DIR
   git push deploy dev
