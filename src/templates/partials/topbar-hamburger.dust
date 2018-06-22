@@ -1,5 +1,5 @@
 <div class="top-bar">
-  <img class="top-bar__button" role="button" src="/static/assets/svg/hamburger.svg" alt="hamburger open menu" />
+  <img class="top-bar__button" role="button" src={@hash path="dist/assets/svg/hamburger.svg" /} alt="hamburger open menu" />
   <div class="top-bar__title">
     Streamwave
   </div>

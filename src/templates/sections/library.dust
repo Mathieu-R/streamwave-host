@@ -1,3 +1,6 @@
+{>"base"/}
+
+{<section}
 <div class="library">
   <section class="library__inner">
     {#library}
@@ -5,3 +8,4 @@
     {/library}
   </section>
 </div>
+{/section}

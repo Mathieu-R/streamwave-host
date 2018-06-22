@@ -15,11 +15,9 @@ const { Track } = require('../models/Track');
 const resolvePath = path.resolve;
 
 function getLibrary (req, res) {
-  Album.find({owner: {$in: ['all', req.user.id]}})
+  return Album.find({owner: {$in: ['all', req.user.id]}})
     //.limit(10)
-    .sort({created_at: -1})
-    .then(albums => res.json(albums))
-    .catch(err => console.error(err));
+    .sort({created_at: -1});
 }
 
 function getAlbum (req, res) {
@@ -30,9 +28,7 @@ function getAlbum (req, res) {
     return;
   }
 
-  Album.findById(id)
-    .then(tracks => res.json(tracks))
-    .catch(err => console.error(err));
+  return Album.findById(id);
 }
 
 // only work for 1 album per time

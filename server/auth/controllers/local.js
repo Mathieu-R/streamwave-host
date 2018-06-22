@@ -70,9 +70,9 @@ function sendVerificationEmail (host, res, user) {
         Bienvenue sur streamwave.
         Veuillez cliquer sur le lien ci-dessous afin d'activer votre compte.`,
       url: production ?
-        `https://auth.streamwave.be/local/account/validate?token=${token}`
+        `https://streamwave.be/auth/local/account/validate?token=${token}`
         :
-        `http://${host}:3000/local/account/validate?token=${token}`,
+        `http://${host}:3000/auth/local/account/validate?token=${token}`,
       action: 'Activer mon compte'
     };
 
@@ -107,7 +107,7 @@ function validateAccount (req, res) {
       res.status(401).send(`Ce token de vérification de compte n'existe pas.`);
       return;
     }
-    const url = production ? 'https://www.streamwave.be/auth/login' : 'http://localhost:8080/auth/login';
+    const url = production ? 'https://www.streamwave.be/auth/login' : 'http://localhost:3000/auth/login';
     res.redirect(url);
   }).catch(err => {
     res.status(500).json({err: 'Erreur lors de la validation du compte.'});
@@ -130,8 +130,8 @@ function login(req, res) {
         return res.status(204).end();
       }
 
-      const token = user.generateToken();
-      res.status(200).json({token});
+      req.session.userId = user._id;
+      res.redirect('/');
   })(req, res);
 }
 
@@ -161,7 +161,7 @@ function getResetToken (req, res) {
         cliquez sur le lien ci-dessous pour changer de mot de passe.
         Dans 1h, ce lien expirera.`,
       url: production ?
-        `https://auth.streamwave.be/local/account/reset/check-reset-token?token=${token}`
+        `https://streamwave.be/auth/local/account/reset/check-reset-token?token=${token}`
         :
         `http://${req.hostname}:3000/local/account/reset/check-reset-token?token=${token}`,
       action: 'Changer de mot de passe'
@@ -194,7 +194,7 @@ function checkResetToken(req, res) {
       return;
     }
 
-    const url = production ? `https://www.streamwave.be/auth/reset/${token}` : `http://localhost:8080/auth/reset/${token}`
+    const url = production ? `https://www.streamwave.be/auth/reset/${token}` : `http://localhost:3000/auth/reset/${token}`
     res.redirect(url);
   }).catch(error => {
     res.status(500).json({error: 'Check token failed.'});

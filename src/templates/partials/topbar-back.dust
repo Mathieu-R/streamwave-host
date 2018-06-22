@@ -1,7 +1,7 @@
 <div class="top-bar">
   <a href="/auth">
-    <img class="top-bar__button" role="button" src="/static/assets/svg/back.svg" alt="arrow back to home" />
-  </Link>
+    <img class="top-bar__button" role="button" src={@hash path="dist/assets/svg/arrow.svg" /} alt="arrow back to home" />
+  </a>
   <div class="top-bar__title">
     Streamwave
   </div>

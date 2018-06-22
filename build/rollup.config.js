@@ -6,7 +6,7 @@ import progress from 'rollup-plugin-progress';
 import replace from 'rollup-plugin-replace';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/scripts/index.js',
   output: {
     file: 'dist/scripts/bundle.js',
     format: 'cjs',

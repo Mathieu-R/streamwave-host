@@ -1,3 +1,6 @@
+{>"base"/}
+
+{<section}
 <div class="search">
   <div class="search__search-bar-container">
     <input
@@ -12,3 +15,4 @@
     </div>
   </div>
 </div>
+{/section}

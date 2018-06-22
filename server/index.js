@@ -8,6 +8,7 @@ const compression = require('compression');
 const express = require('express');
 const dotenv = require('dotenv').config();
 const removeHash = require('./middlewares/remove-hash');
+const session = require('./middlewares/session');
 
 const app = express();
 const server = http.createServer(app);
@@ -24,6 +25,7 @@ const staticOptions = {
 router.use(removeHash);
 router.use(bodyParser.json());
 router.use(compression());
+router.use(session);
 
 // static files
 router.use('/static', serveStatic(path.join(__dirname, '../dist'), staticOptions));

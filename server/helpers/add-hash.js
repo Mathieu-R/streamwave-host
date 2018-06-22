@@ -17,7 +17,9 @@ function hash(dust) {
       const path = params.path;
       const content = await readFile(path);
       const hash = await createHash(content);
-      const hashedPath = path.replace(/([^\.]+)\.(.+)/, `$1.${hash}.$2`);
+      const hashedPath = path
+        .replace(/\/?dist/, '/static')
+        .replace(/([^\.]+)\.(.+)/, `$1.${hash}.$2`);
       return chunk.write(hashedPath).end();
     });
   }

@@ -1,10 +1,8 @@
 import { get, set, del } from 'idb-keyval';
-import store from '../store';
 import { flatten } from '../utils';
+import Toast from '../components/toast';
+import Settings from './settings-manager';
 import Constants from '../constants';
-
-import { setDownloadPercentage, removeDownloadPercentage } from '../store/player';
-import { toasting } from '../store/toast';
 
 const MUSIC_CACHE_NAME = 'streamwave-music-cache';
 
@@ -15,7 +13,7 @@ async function getRequestsUrls (tracklist, cover) {
     '256': 'audio256URL'
   };
 
-  const quality = store.getState().settings.downloadQuality;
+  const quality = await Settings.get('download-quality');
   const urls = tracklist.map(track => {
     const audio = track[qualities[quality]];
     const {manifestURL, playlistHLSURL} = track;
@@ -54,7 +52,6 @@ export async function simpleDownloadTracklist ({tracklist, cover, id: tracklistI
 }
 
 export async function downloadTracklist ({tracklist, cover, id: tracklistId, type}) {
-  console.log('download');
   const registration = await navigator.serviceWorker.ready;
 
   if (!registration.active) {
@@ -79,7 +76,6 @@ export async function downloadTracklist ({tracklist, cover, id: tracklistId, typ
 }
 
 export async function removeTracklistFromCache (tracklist, id) {
-  console.log('remove tracklist');
   const cache = await caches.open(MUSIC_CACHE_NAME);
   const keys = await cache.keys();
 
@@ -114,10 +110,10 @@ export async function downloadTracklistInBackground ({tracklist, album, cover, i
   }
 
   // dispatch toasting so we inform the user in UI
-  store.dispatch(toasting([
+  Toast.create([
     'Votre tracklist va être téléchargée en arrière-plan.',
     'Vous pouvez fermer l\'application si vous le désirez.'
-  ], ['dismiss'], 5000));
+  ], ['dismiss'], 5000);
 
   // store the tracklist in idb in case we would lost internet connection
   // not sure I need to do that
@@ -149,10 +145,8 @@ export async function downloadTracklistInBackground ({tracklist, album, cover, i
 
   // get requests urls
   const requests = await getRequestsUrls(tracklist, cover);
-  console.log(requests);
   // launch a background fetch
   const bgFetch = await registration.backgroundFetch.fetch(id, requests, options);
-  console.log(bgFetch);
 }
 
 export function updateDataVolume ({userId, value}) {
@@ -172,7 +166,7 @@ export function updateDataVolume ({userId, value}) {
   }).catch(err => console.error(err));
 }
 
-export function getDataVolumeDownloaded ({userId}) {
+export function getDataVolume ({userId}) {
   return get(`data-volume_${userId}`).then(volume => {
     let volumeInMo;
 
@@ -192,8 +186,8 @@ export function getDataVolumeDownloaded ({userId}) {
 }
 
 export function resetDataVolume () {
-  const userId = store.getState().user.id;
-  return set(`data-volume_${userId}`, 0);
+  // const userId =
+  // return set(`data-volume_${userId}`, 0);
 }
 
 export function trackDownload (responses, tracklistId) {
@@ -210,12 +204,12 @@ export function trackDownload (responses, tracklistId) {
     const cloned = response.clone();
     const onStream = ({done, value}) => {
       if (done) {
-        store.dispatch(removeDownloadPercentage({id: tracklistId}));
+        //store.dispatch(removeDownloadPercentage({id: tracklistId}));
         return;
       }
 
       downloaded += value.length;
-      store.dispatch(setDownloadPercentage({id: tracklistId, percentage: (downloaded / totalDownload)}));
+      //store.dispatch(setDownloadPercentage({id: tracklistId, percentage: (downloaded / totalDownload)}));
       return reader.read().then(onStream);
     }
 

@@ -1,3 +1,6 @@
+{>"base"/}
+
+{<section}
 <div class="upload">
   <div class="upload__drag-drop">
     <div class="upload__icon"></div>
@@ -26,3 +29,4 @@
     </div>
   </div>
 </div>
+{/section}

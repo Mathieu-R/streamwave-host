@@ -8,7 +8,7 @@
     "server": "nodemon --inspect server/index.js",
     "clean-css": "node build/clean-css",
     "create-css-folder": "mkdirp ./dist/css",
-    "copy": "copy src/assets dist/assets && cp-cli src/manifest.json dist/manifest.json",
+    "copy": "copy src/assets dist/assets && copy src/third_party dist/third_party && cp-cli src/manifest.json dist/manifest.json && cp-cli src/sw.js dist/sw.js &&",
     "watch-js": "rollup -wc build/rollup.config.js",
     "watch-css": "node-sass src/style -w dist/css/streamwave.css",
     "build-js": "rollup -c build/rollup.config.production.js",

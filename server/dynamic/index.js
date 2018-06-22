@@ -1,18 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const app = express();
 const adaro = require('adaro');
+
+const auth = require('../middlewares/auth');
+const { getLibrary, getAlbum } = require('../library/controllers/library');
+
+const { CDN_URL } = process.env;
+
+const app = express();
 
 const production = process.env.NODE_ENV === 'production';
 const staticPath = path.join(__dirname, '../../dist');
 const templatePath = path.join(__dirname, '../../src/templates');
-let inlineStyle = null;
 
-// only inline style in production
-if (production) {
-  inlineStyle = fs.readFileSync(path.join(staticPath, 'css/critical.css'), 'utf-8');
-}
+const inlineStyle = fs.readFileSync(path.join(staticPath, 'css/critical.css'), 'utf-8');
 
 const options = {
   cache: production ? true : false,
@@ -27,19 +29,57 @@ const options = {
   ]
 };
 
+// basic view options
 const viewOptions = {
   title: 'Streamwave',
-  styles: [path.join(staticPath, 'css/streamwave.css')],
+  styles: ['dist/css/streamwave.css'],
   inlineStyle,
-  scripts: [path.join(staticPath, 'scripts/bundle.js')]
+  scripts: ['dist/scripts/bundle.js']
 }
+
+// view options when user
+// is authenticated in the app
+const appViewOptions = (req) => ({
+  ...viewOptions, ...{
+    user: req.user
+  }
+});
 
 app.engine('dust', adaro.dust(options));
 app.set('view engine', 'dust');
 app.set('views', templatePath);
 
-app.get('/', (req, res) => {
-  // stuff
+// auth
+app.get('/auth', (req, res) => {
+  res.status(200).render('sections/auth/home', viewOptions);
+});
+
+app.get('/auth/login', (req, res) => {
+  res.status(200).render('sections/auth/login', viewOptions);
+});
+
+app.get('/auth/register', (req, res) => {
+  res.status(200).render('sections/auth/register', viewOptions);
+});
+
+app.get('/auth/forgot', (req, res) => {
+  res.status(200).render('sections/auth/forgot', viewOptions);
+});
+
+app.get('/auth/reset/:token', (req, res) => {
+  res.status(200).render('sections/auth/reset', viewOptions);
+});
+
+// app
+app.get('/', auth, (req, res) => {
+  getLibrary().then(library => {
+    res.status(200).render('sections/library', {
+      ...viewOptions,
+      user: req.user,
+      library,
+      cdnurl: CDN_URL
+    });
+  });
 });
 
 module.exports = app;

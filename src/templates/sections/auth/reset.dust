@@ -1,3 +1,6 @@
+{>"auth"/}
+
+{<section}
 <div class="container">
   <form class="form">
     <div class="input-wrapper">
@@ -13,3 +16,4 @@
     </button>
   </form>
 </div>
+{/section}

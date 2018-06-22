@@ -1,6 +1,7 @@
 const {promisify} = require('util');
 const {OAuth2Client} = require('google-auth-library');
-const GoogleAccount = require('../models/GoogleAccount');
+const UserAccount = require('../models/UserAccount');
+const userObject = require('../utils/user-object');
 const production = process.env.NODE_ENV === 'production';
 
 const oauth2client = new OAuth2Client(
@@ -16,7 +17,7 @@ async function authenticateUser (token) {
   });
   const profile = loginTicket.getPayload();
 
-  return GoogleAccount.findOneAndUpdate({googleId: profile.sub}, {
+  return UserAccount.findOneAndUpdate({googleId: profile.sub}, {
     googleId: profile.sub,
     username: profile.name,
     email: profile.email,
@@ -33,8 +34,11 @@ function handleGoogleLogin (req, res) {
   const authorizationHeader = req.headers.authorization;
   const id_token = authorizationHeader.split(' ')[1];
   authenticateUser(id_token).then(user => {
-    const token = user.generateToken();
-    res.status(200).json({token});
+    // set session.
+    req.session.userId = user.googleId;
+    // do not redirect user to home page
+    // cause we have to save user credentials.
+    res.status(200).json({user: userObject(user)});
   }).catch(err => {
     res.status(500).send(`Auth failed. ${err.message}`);
   });

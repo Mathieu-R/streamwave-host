@@ -1,5 +1,5 @@
-importScripts("/third_party/idb-keyval.min.js");
-importScripts('/cache-manifest.js');
+importScripts('{@hash path="dist/third_party/idb-keyval.min.js /}');
+importScripts('{@hash path="/static/cache-manifest.js" /}');
 
 const CACHENAME = 'static';
 const VERSION = '{version}';

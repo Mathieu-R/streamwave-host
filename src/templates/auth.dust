@@ -1,7 +1,5 @@
 {>"partials/header" title=title style=style inlineStyle=inlineStyle /}
 <div class="app">
-  {>"partials/topbar-hamburger" /}
-  {>"components/side-nav" /}
   {+section/}
   <div class="toast"></div>
 </div>

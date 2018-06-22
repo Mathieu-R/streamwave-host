@@ -1,3 +1,6 @@
+{>"auth"/}
+
+{<section}
 <div class="container-column">
   {>"partials/topbar-back" /}
   <form class="form">
@@ -10,3 +13,4 @@
     </button>
   </form>
 </div>
+{/section}

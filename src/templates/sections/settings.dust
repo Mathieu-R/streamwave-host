@@ -1,3 +1,6 @@
+{>"base"/}
+
+{<section}
 <div class="settings">
   <div class="settings__container">
     <div class="download-mobile-network">
@@ -43,3 +46,4 @@
     </div>
   </div>
 </div>
+{/section}

@@ -1,3 +1,6 @@
+{>"base"/}
+
+{<section}
 <div class="tracklist">
   <section class="tracklist__infos">
     <div class="tracklist__infos-wrapper">
@@ -39,3 +42,4 @@
     {/tracks}
   </section>
 </div>
+{/section}

@@ -2,8 +2,6 @@ const http = require('http');
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
 const mongoose = require('../mongoose');
 
 const {
@@ -26,8 +24,6 @@ const {logout} = require('./controllers/common');
 const app = express();
 const server = http.createServer(app);
 const router = express.Router();
-
-const production = process.env.NODE_ENV === 'production';
 
 // middlewares
 router.use(passport.initialize());

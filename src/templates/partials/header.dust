@@ -8,7 +8,7 @@
   <meta name="description" content="Musical streaming Progressive Web App including bleeding edge features." />
   <meta name="theme-color" content="#000">
 
-  <link rel="manifest" href={@hash path="/static/manifest.json"}{/hash}>
+  <link rel="manifest" href={@hash path="dist/manifest.json"}{/hash}>
   <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon">
 
@@ -18,7 +18,7 @@
 
   {?inlineStyle}
   <style>
-    {inlineStyle}
+    {inlineStyle|s}
   </style>
   {/inlineStyle}
 
