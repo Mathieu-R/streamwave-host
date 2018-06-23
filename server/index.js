@@ -35,7 +35,7 @@ router.get('/health', (req, res) => res.send('streamwave server is up.'));
 router.use('/auth', require('./auth'));
 router.use('/library', require('./library'));
 router.use('/push', require('./push'));
-router.use('/sw.js', require('./service-worker'));
+router.use('/service-worker.js', require('./service-worker'));
 router.use('/', require('./dynamic'));
 
 app.use(router);

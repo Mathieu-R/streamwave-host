@@ -1,6 +1,5 @@
 import { EventEmitter } from 'events';
-import store from '../store';
-import { toasting } from '../store/toast';
+import Toast from '../components/toast';
 
 class Uploader extends EventEmitter {
   constructor () {
@@ -21,7 +20,7 @@ class Uploader extends EventEmitter {
   upload (url, files, subscription) {
     this.xhr = new XMLHttpRequest();
     this.xhr.open('POST', url, true);
-    this.xhr.setRequestHeader('authorization', `Bearer ${localStorage.getItem('streamwave-token')}`);
+    this.xhr.withCredentials = true;
 
     if (subscription) {
       this.xhr.setRequestHeader('x-push-id', subscription.toJSON().endpoint);
@@ -44,16 +43,14 @@ class Uploader extends EventEmitter {
       return;
     }
 
-    let headers = {
-      'authorization': `Bearer ${localStorage.getItem('streamwave-token')}`
-    }
+    let headers = {};
 
     if (subscription) {
       headers = {...headers, 'x-push-id': subscription.toJSON().endpoint}
     }
 
     // request object
-    const request = new Request(url, {body: files, method: 'POST', headers});
+    const request = new Request(url, {body: files, method: 'POST', credentials: true, headers});
 
     // options
     const icons = [
@@ -100,10 +97,10 @@ class Uploader extends EventEmitter {
 
   // fire when upload success
   onUploadSucessed () {
-    store.dispatch(toasting([
+    Toast.create([
       'Fichiers envoyés avec succès',
       'Votre album sera bientôt disponible dans votre catalogue'
-    ], ['dismiss'], 8000));
+    ], ['dismiss'], 8000);
   }
 
   // loadend event

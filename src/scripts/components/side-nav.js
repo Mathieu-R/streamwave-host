@@ -1,5 +1,10 @@
 class SideNav {
   constructor () {
+    const sideNav = document.querySelector('.side-nav');
+    if (!sideNav) {
+      return;
+    }
+
     this.startX = 0;
     this.currentX = 0;
     this.dragging = false;
@@ -13,9 +18,11 @@ class SideNav {
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
     this.close = this.close.bind(this);
 
+    this.sideNav = sideNav;
     this.overlay = document.querySelector('.overlay');
-    this.sideNav = document.querySelector('.side-nav');
     this.closeButton = document.querySelector('.side-nav__hamburger');
+
+    this.addEventListeners();
   }
 
   addEventListeners () {

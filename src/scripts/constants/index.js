@@ -1,10 +1,4 @@
-const production = process.env.NODE_ENV === 'production';
-
 class Constants {
-  static get PRODUCTION () {
-    return process.env.NODE_ENV === 'production';
-  }
-
   static get AUTH_URL () {
     return (
       production ? 'https://auth.streamwave.be' : 'http://localhost:3000'

@@ -23,7 +23,7 @@ class SettingsManager {
     return settings;
   }
 
-  async static init () {
+  static async init () {
     let settings = await get(SettingsManager.IDB_KEY);
     if (settings) {
       return;
@@ -37,18 +37,18 @@ class SettingsManager {
     return get(SettingsManager.IDB_KEY);
   }
 
-  async static get (key) {
+  static async get (key) {
     const settings = await get(SettingsManager.IDB_KEY);
     return settings[key];
   }
 
-  async static set (key, value) {
+  static async set (key, value) {
     const settings = await get(SettingsManager.IDB_KEY);
     settings[key] = value;
     return set(SettingsManager.IDB_KEY, settings);
   }
 
-  async static clear () {
+  static async clear () {
     await set(SettingsManager.IDB_KEY, SettingsManager.INITIAL_SETTINGS);
     return SettingsManager.INITIAL_SETTINGS;
   }

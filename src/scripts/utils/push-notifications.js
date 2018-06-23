@@ -1,13 +1,9 @@
 import { get, set } from 'idb-keyval';
 import { urlBase64ToUint8Array } from './index';
+import Toast from '../components/toast';
 import Constants from '../constants';
-import store from '../store';
 
 let instance = null;
-
-import {
-  toasting
-} from '../store/toast';
 
 class Pusher {
   constructor () {
@@ -112,11 +108,11 @@ class Pusher {
     });
 
     if (response.status === 500) {
-      store.dispatch(toasting(['Error when subscribing...'], ['dismiss'], 5000));
+      Toast.create(['Error when subscribing...'], ['dismiss'], 5000);
     }
 
     if (response.status === 200) {
-      store.dispatch(toasting(['Subscribed'], ['dismiss'], 3000));
+      Toast.create(['Subscribed'], ['dismiss'], 3000);
     }
 
     this.subscribing = false;
@@ -147,7 +143,7 @@ class Pusher {
     });
 
     if (response.status === 200) {
-      store.dispatch(toasting(['Unsubscribed'], ['dismiss'], 3000));
+      Toast.create(['Unsubscribed'], ['dismiss'], 3000);
     }
 
     this.unsubscribing = false;

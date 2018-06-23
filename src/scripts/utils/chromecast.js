@@ -1,9 +1,4 @@
-import store from '../store';
 import Constants from '../constants';
-import {
-  setChromecastAvailable,
-  setChromecastStatus
-} from '../store/player';
 
 class Chromecaster {
   constructor (castProxy) {
@@ -11,6 +6,7 @@ class Chromecaster {
     this.onCastStatusChange = this.onCastStatusChange.bind(this);
     this.castProxy.addEventListener('caststatuschanged', this.onCastStatusChange);
 
+    this.castButton = document.querySelector('.cast-button');
     this.castReceiver = document.querySelector('.top-bar__cast-receiver');
     this.castReceiverName = document.querySelector('.top-bar__cast-receiver__name');
   }
@@ -64,24 +60,24 @@ class Chromecaster {
   }
 
   getMediaInfo () {
-    const state = store.getState();
-    const data = {
-      artist: state.player.artist,
-      album: state.player.album,
-      title: state.player.track.title,
-      coverURL: `${Constants.CDN_URL}/${state.player.track.coverURL}`,
-      currentTime: state.player.currentTime,
-      duration: state.player.track.duration
-    };
-    return data;
+  //   const state = store.getState();
+  //   const data = {
+  //     artist: state.player.artist,
+  //     album: state.player.album,
+  //     title: state.player.track.title,
+  //     coverURL: `${Constants.CDN_URL}/${state.player.track.coverURL}`,
+  //     currentTime: state.player.currentTime,
+  //     duration: state.player.track.duration
+  //   };
+  //   return data;
   }
 
   updateChromecastButtonDisplay ({available}) {
-    return store.dispatch(setChromecastAvailable({available}));
+    this.castButton.style.display = available ? 'block' : 'none';
   }
 
   updateUI ({chromecasting}) {
-    return store.dispatch(setChromecastStatus({chromecasting}));
+    //return store.dispatch(setChromecastStatus({chromecasting}));
   }
 }
 

@@ -1,22 +1,14 @@
 import Constants from './constants';
+import Toast from './components/toast';
 import Pusher from './utils/push-notifications';
-
-import {
-  setDownloadPercentage,
-  removeDownloadPercentage
-} from './store/player';
-
-import {
-  toasting
-} from './store/toast';
 
 import {
   updateDataVolume
 } from './utils/download';
 
-export default (store) => {
-  if (Constants.PRODUCTION && Constants.SUPPORT_SERVICE_WORKER) {
-    navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(registration => {
+export default () => {
+  if (Constants.SUPPORT_SERVICE_WORKER) {
+    navigator.serviceWorker.register('/static/service-worker.js', {scope: '/'}).then(registration => {
       if (Constants.SUPPORT_PUSH_NOTIFICATIONS) {
         const pusher = new Pusher();
         pusher.init();
@@ -30,7 +22,6 @@ export default (store) => {
 
         registration.installing.onstatechange = event => {
           console.log(`Service Worker ${event.target.state}`);
-          console.log(navigator.serviceWorker.controller);
 
           if (firstTimeCached) {
             return;
@@ -39,13 +30,13 @@ export default (store) => {
           // first time service-worker installed.
           if (event.target.state === 'installed' && !navigator.serviceWorker.controller) {
             firstTimeCached = true;
-            store.dispatch(toasting(['Streamwave cached', 'Ready to work offline']));
+            Toast.create(['Streamwave cached', 'Ready to work offline']);
             return;
           }
 
           // new update
           if (event.target.state === 'activated' && navigator.serviceWorker.controller) {
-            store.dispatch(toasting(['Streamwave updated', 'Refresh to get the new version'], ['reload'], 8000));
+            Toast.create(['Streamwave updated', 'Refresh to get the new version'], ['reload'], 8000);
             return;
           }
         }
@@ -56,14 +47,14 @@ export default (store) => {
           // value is the bit that's been downloaded for a chunk
           // with that I am consistant with shaka-player streaming track
           const {tracklistId, downloaded, totalDownload, value} = event.data;
-          store.dispatch(setDownloadPercentage({id: tracklistId, percentage: (downloaded / totalDownload)}));
-          updateDataVolume({userId: store.getState().user.id, value})
+          //store.dispatch(setDownloadPercentage({id: tracklistId, percentage: (downloaded / totalDownload)}));
+          //updateDataVolume({userId: store.getState().user.id, value})
           return;
         }
 
         if (event.data.type === 'downloaded') {
           const {tracklistId} = event.data;
-          store.dispatch(removeDownloadPercentage({id: tracklistId}));
+          //store.dispatch(removeDownloadPercentage({id: tracklistId}));
         }
       }
     }).catch(err => console.error(err));

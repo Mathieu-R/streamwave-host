@@ -3,7 +3,6 @@ const path = require('path');
 const express = require('express');
 
 const app = express();
-const router = express.Router();
 const adaro = require('adaro');
 
 const templatePath = path.join(__dirname, '../../src');
@@ -26,13 +25,11 @@ app.set('views', templatePath);
 
 app.use(require('../middlewares/no-cache'));
 
-app.get('service-worker.js', (req, res) => {
+app.get('*', (req, res) => {
   res.set({'Content-Type': 'application/javascript'});
-  res.status(200).render('service-worker', {
+  res.status(200).render('sw', {
     version
   });
 });
-
-app.use(router);
 
 module.exports = app;

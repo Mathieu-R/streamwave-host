@@ -1,5 +1,5 @@
-importScripts('{@hash path="dist/third_party/idb-keyval.min.js /}');
-importScripts('{@hash path="/static/cache-manifest.js" /}');
+importScripts('{@hash path="dist/third_party/idb-keyval.min.js}{/hash}');
+importScripts('{@hash path="dist/cache-manifest.js"}{/hash}');
 
 const CACHENAME = 'static';
 const VERSION = '{version}';
@@ -48,17 +48,6 @@ self.onfetch = event => {
 
   const url = new URL(event.request.url);
 
-  // network-first for playlists list
-  if (url.href === 'https://api.streamwave.be/v1/playlists') {
-    return networkFirst(event);
-  }
-
-  // api call (library, album, playlist)
-  if (url.hostname === 'api.streamwave.be') {
-    // get something from the cache then update it
-    return staleWhileRevalidate(event);
-  }
-
   // artworks
   if (url.hostname === 'cdn.streamwave.be' && url.pathname.endsWith('.jpg')) {
     return staleWhileRevalidate(event);
@@ -70,10 +59,6 @@ self.onfetch = event => {
   }
 
   event.respondWith(async function () {
-    // console.log(event.request.url);
-    // console.log(await caches.match(event.request));
-    // console.log(fetch(event.request));
-
     // cached stuff (e.g. static files - cache-manifest / routes)
     const response = await caches.match(event.request);
 

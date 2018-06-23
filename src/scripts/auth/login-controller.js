@@ -62,7 +62,6 @@ class Login {
       return;
     }
 
-    localStorage.setItem('streamwave-token', data.token);
     const credentials = await this.storeCredentials(email, password);
     location.href = "/";
   }
