@@ -14,7 +14,6 @@ module.exports = session({
     secure: production ? true : false,
     httpOnly: true
   },
-  proxy: false,
   resave: false,
   saveUninitialized: false
 });

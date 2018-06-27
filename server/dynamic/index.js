@@ -72,7 +72,7 @@ app.get('/auth/reset/:token', (req, res) => {
 
 // app
 app.get('/', auth, (req, res) => {
-  getLibrary().then(library => {
+  getLibrary(req).then(library => {
     res.status(200).render('sections/library', {
       ...viewOptions,
       user: req.user,

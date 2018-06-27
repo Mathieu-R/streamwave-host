@@ -11,6 +11,7 @@ class Auth {
     this.googleButton = googleButton;
 
     this.GOOGLE_CLIENT_ID = '518872171102-tpqle4q49rihv2atopm4c0uvnumochtd.apps.googleusercontent.com';
+    this.autoSignOnConnect = this.autoSignOnConnect.bind(this);
     this.googleLogin = this.googleLogin.bind(this);
 
     this.initGapi();
@@ -60,7 +61,8 @@ class Auth {
       }
 
       if (credentials.type === 'federated') {
-        this.googleLogin().catch(err => console.error(err));
+        console.log(this);
+        this.googleLogin();
         return;
       }
     }
@@ -81,7 +83,7 @@ class Auth {
       });
     })
     .then(response => response.json())
-    .then(user => {
+    .then(({user}) => {
       this.storeFederatedCredentials(user).then(_ => {
         location.href = '/';
       });
@@ -91,6 +93,7 @@ class Auth {
 
   async storeFederatedCredentials (profile) {
     if (Constants.SUPPORT_CREDENTIAL_MANAGEMENT_API) {
+      console.log(profile);
       const credentials = await navigator.credentials.create({
         federated: {
           id: profile.id,

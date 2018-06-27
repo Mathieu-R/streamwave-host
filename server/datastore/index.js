@@ -4,6 +4,8 @@ const client = redis.createClient({
   password: process.env.REDIS_PASSWORD
 });
 
+client.select(1);
+
 const get = promisify(client.get).bind(client);
 const set = promisify(client.set).bind(client);
 const del = promisify(client.del).bind(client);

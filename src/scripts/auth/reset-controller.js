@@ -20,7 +20,7 @@ class Reset {
     const token = params.get('token');
     const form = evt.target
     const password = form.password.value;
-    const passwordConfirm = form.passwordConfirm.value;
+    const passwordConfirm = form['password-confirm'].value;
 
     if (password === '' || passwordConfirm === '') {
       Toast.create(['Vérifiez que vous avez bien rempli tous les éléments du formulaire.']);

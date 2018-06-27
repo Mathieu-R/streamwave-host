@@ -18,7 +18,7 @@ class Register {
     const form = evt.target;
     const email = form.email.value;
     const password = form.password.value;
-    const passwordConfirm = form.passwordConfirm.value;
+    const passwordConfirm = form['password-confirm'].value;
 
     if (email === '' || password === '' || passwordConfirm === '') {
       Toast.create(['Vérifiez que vous avez bien rempli tous les éléments du formulaire.']);

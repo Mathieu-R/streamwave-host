@@ -6,11 +6,11 @@
   <form class="form login-form">
     <div class="input-wrapper">
       <label class="label" for="email">E-mail</label>
-      <input type="email" id="email" autocomplete="email"/>
+      <input type="email" id="email" name="email" autocomplete="email"/>
     </div>
     <div class="input-wrapper">
       <label class="label" for="password">Mot de passe</label>
-      <input type="password" id="password" autocomplete="current-password"/>
+      <input type="password" id="password" name="password" autocomplete="current-password"/>
     </div>
     <button class="form-button" aria-label="login">
       Se connecter

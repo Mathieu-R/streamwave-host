@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const router = express.Router();
 
 const {
   initPushService, getVapidKeys, subscribe, unsubscribe
@@ -9,10 +8,8 @@ const {
 // init push notification service
 initPushService().catch(err => console.error(err));
 
-router.get('/push', getVapidKeys);
-router.post('/push/subscribe', subscribe);
-router.post('/push/unsubscribe', unsubscribe);
-
-app.use(router);
+app.get('/push', getVapidKeys);
+app.post('/push/subscribe', subscribe);
+app.post('/push/unsubscribe', unsubscribe);
 
 module.exports = app;

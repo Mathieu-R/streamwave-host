@@ -22,22 +22,18 @@ const {handleGoogleLogin} = require('./controllers/google');
 const {logout} = require('./controllers/common');
 
 const app = express();
-const server = http.createServer(app);
-const router = express.Router();
 
 // middlewares
-router.use(passport.initialize());
+app.use(passport.initialize());
 
-router.post('/local/register', checkAuthInfos, checkErrors, register);
-router.get('/local/account/validate', checkToken, checkErrors, validateAccount);
-router.post('/local/login', checkAuthInfos, checkErrors, login);
-router.post('/local/account/reset/get-reset-token', checkEmail, checkErrors, getResetToken);
-router.get('/local/account/reset/check-reset-token', checkToken, checkErrors, checkResetToken);
-router.post('/local/account/reset/change-password', checkToken, checkPassword, checkErrors, resetPassword);
+app.post('/local/register', checkAuthInfos, checkErrors, register);
+app.get('/local/account/validate', checkToken, checkErrors, validateAccount);
+app.post('/local/login', checkAuthInfos, checkErrors, login);
+app.post('/local/account/reset/get-reset-token', checkEmail, checkErrors, getResetToken);
+app.get('/local/account/reset/check-reset-token', checkToken, checkErrors, checkResetToken);
+app.post('/local/account/reset/change-password', checkToken, checkPassword, checkErrors, resetPassword);
 
-router.post('/google/login', checkOauth2IdTokenInAuthorizationHeader, checkErrors, handleGoogleLogin);
-router.delete('/logout', logout);
-
-app.use(router);
+app.post('/google/login', checkOauth2IdTokenInAuthorizationHeader, checkErrors, handleGoogleLogin);
+app.delete('/logout', logout);
 
 module.exports = app;

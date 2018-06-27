@@ -149,10 +149,8 @@ export async function downloadTracklistInBackground ({tracklist, album, cover, i
   const bgFetch = await registration.backgroundFetch.fetch(id, requests, options);
 }
 
-export function updateDataVolume ({userId, value}) {
-  if (!userId) return;
-
-  return get(`data-volume_${userId}`).then(volume => {
+export function updateDataVolume (value) {
+  return get('data-volume').then(volume => {
     let newDataVolume;
 
     // if volume has never been set
@@ -162,12 +160,12 @@ export function updateDataVolume ({userId, value}) {
       newDataVolume = volume + value;
     }
 
-    return set(`data-volume_${userId}`, newDataVolume);
+    return set('data-volume', newDataVolume);
   }).catch(err => console.error(err));
 }
 
-export function getDataVolume ({userId}) {
-  return get(`data-volume_${userId}`).then(volume => {
+export function getDataVolume () {
+  return get('data-volume').then(volume => {
     let volumeInMo;
 
     // user has no data downloaded
@@ -186,8 +184,7 @@ export function getDataVolume ({userId}) {
 }
 
 export function resetDataVolume () {
-  // const userId =
-  // return set(`data-volume_${userId}`, 0);
+  return set('data-volume', 0);
 }
 
 export function trackDownload (responses, tracklistId) {

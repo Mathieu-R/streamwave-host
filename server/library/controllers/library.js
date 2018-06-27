@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const slugify = require('slugify');
 const mm = require('music-metadata');
 const sharp = require('sharp');
-const { push } = require('../../push/controllers/push-notifications');
+//const { push } = require('../../push/controllers/push-notifications');
 const { metadataObject, UPLOAD_PATH } = require('../utils');
 const { insertAlbumsByUser } = require('../seed');
 
@@ -14,7 +14,7 @@ const { Track } = require('../models/Track');
 
 const resolvePath = path.resolve;
 
-function getLibrary (req, res) {
+function getLibrary (req) {
   return Album.find({owner: {$in: ['all', req.user.id]}})
     //.limit(10)
     .sort({created_at: -1});
@@ -43,7 +43,7 @@ async function uploadMusic (req, res) {
     if (req.headers['x-push-id']) {
       const subscriptionId = req.headers['x-push-id'];
       // push notification
-      await push(subscriptionId, realAlbumName);
+      //await push(subscriptionId, realAlbumName);
     }
 
     await clearTempDirectory();

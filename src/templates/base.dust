@@ -3,6 +3,9 @@
   {>"partials/topbar-hamburger" /}
   {>"components/side-nav" /}
   {+section/}
+  {>"components/mini-player" /}
+  {>"components/side-nav" /}
+  <audio class="audio" preload="metadata"></audio>
   <div class="toast"></div>
 </div>
 {>"partials/footer" scripts=scripts /}

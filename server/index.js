@@ -9,10 +9,10 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const removeHash = require('./middlewares/remove-hash');
 const session = require('./middlewares/session');
+const userMiddleware = require('./middlewares/user-middleware');
 
 const app = express();
 const server = http.createServer(app);
-const router = express.Router();
 
 const production = process.env.NODE_ENV === 'production';
 const PORT = process.env.PORT || 3000;
@@ -22,23 +22,22 @@ const staticOptions = {
 }
 
 // middlewares
-router.use(removeHash);
-router.use(bodyParser.json());
-router.use(compression());
-router.use(session);
+app.use(session);
+app.use(userMiddleware);
+app.use(removeHash);
+app.use(bodyParser.json());
+app.use(compression());
 
 // static files
-router.use('/static', serveStatic(path.join(__dirname, '../dist'), staticOptions));
+app.use('/static', serveStatic(path.join(__dirname, '../dist'), staticOptions));
 
 // routes
-router.get('/health', (req, res) => res.send('streamwave server is up.'));
-router.use('/auth', require('./auth'));
-router.use('/library', require('./library'));
-router.use('/push', require('./push'));
-router.use('/service-worker.js', require('./service-worker'));
-router.use('/', require('./dynamic'));
-
-app.use(router);
+app.get('/health', (req, res) => res.send('streamwave server is up.'));
+app.use('/auth', require('./auth'));
+app.use('/library', require('./library'));
+//app.use('/push', require('./push'));
+app.use('/service-worker.js', require('./service-worker'));
+app.use('/', require('./dynamic'));
 
 server.listen(PORT, () => {
   console.log(`Node server listening on http://localhost:${PORT}`);
