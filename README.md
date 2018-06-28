@@ -57,6 +57,7 @@ Some credentials for Google Oauth2 : https://console.cloud.google.com/apis/crede
 `GOOGLESECRET`: google oauth2 secret.    
 `GOOGLECALLBACKPROD`: google oauth2 callback.    
 
+`SESSION_PASSWORD`: strong secret for sessions.
 `REDIS_PASSWORD`: strong secret for Redis.    
 `MAIL_HOST_PROD`: host url for mail (ex: smtp.example.com).    
 `MAIL_PORT_PROD`: smtp port for mail.    

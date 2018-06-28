@@ -12,6 +12,7 @@
   <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon">
 
+  <link rel="preload" href="https://apis.google.com/js/platform.js?onload=init" as="script" crossorigin>
   <link rel="preconnect" href="https://apis.google.com" crossorigin>
   <link rel="preconnect" href="//www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -23,7 +24,8 @@
   {/inlineStyle}
 
   {#styles}
-    <link rel="stylesheet" href={@hash path=.}{/hash}>
+    <link rel="preload" href="{@hash path=.}{/hash}" as="style">
+    <link rel="stylesheet" href="{@hash path=.}{/hash}">
   {/styles}
 </head>
 

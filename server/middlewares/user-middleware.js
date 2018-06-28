@@ -9,13 +9,14 @@ const userMiddleware = (req, res, next) => {
 
   const userId = req.session.userId;
 
-  UserAccount.findOne({_id: userId, googleId: userId}).then(user => {
-    if (!user) {
-      next();
-      return;
-    }
+  UserAccount.findOne({userId}).then(user => {
+    // if (!user) {
+    //   next();
+    //   return;
+    // }
 
     req.user = userObject(user);
+    next();
   });
 }
 

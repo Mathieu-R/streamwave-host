@@ -2,7 +2,8 @@ const mongoose = require('../../mongoose');
 const bcrypt = require('bcrypt');
 
 const userAccountSchema = new mongoose.Schema({
-  googleId: {type: String, unique: true},
+  // whether userId or googleId
+  userId: {type: String, unique: true},
   username: {type: String, unique: true},
   email: {type: String, unique: true, required: true},
   avatar: {type: String, default: '/assets/svg/avatar.svg'},

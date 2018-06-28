@@ -16,7 +16,7 @@ class Streamwave {
     new ResetController();
     new SideNav();
 
-    installServiceWorker();
+    // installServiceWorker();
   }
 }
 

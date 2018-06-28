@@ -54,7 +54,10 @@ async function createAccount(req, res) {
   });
 
   await user.hashPassword(password);
-  return user.save();
+  return user.save().then(user => {
+    user.userId = user._id;
+    return user.save();
+  });
 }
 
 function sendVerificationEmail (host, res, user) {
@@ -130,7 +133,7 @@ function login(req, res) {
         return res.status(204).end();
       }
 
-      req.session.userId = user._id;
+      req.session.userId = user.userId;
       res.redirect('/');
   })(req, res);
 }

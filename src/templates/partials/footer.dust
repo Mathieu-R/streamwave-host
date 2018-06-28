@@ -1,7 +1,8 @@
   {#scripts}
     <script type="text/javascript" defer src="{@hash path=.}{/hash}"></script>
   {/scripts}
+  <script type="text/javascript" defer src="https://apis.google.com/js/platform.js?onload=init"></script>
   <script type="text/javascript" defer src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.4.1/shaka-player.compiled.js"></script>
+  <script type="text/javascript" defer src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.4.1/shaka-player.compiled.js"></script>
 </body>
 </html>

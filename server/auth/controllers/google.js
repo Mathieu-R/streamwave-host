@@ -17,8 +17,8 @@ async function authenticateUser (token) {
   });
   const profile = loginTicket.getPayload();
 
-  return UserAccount.findOneAndUpdate({googleId: profile.sub}, {
-    googleId: profile.sub,
+  return UserAccount.findOneAndUpdate({userId: profile.sub}, {
+    userId: profile.sub,
     username: profile.name,
     email: profile.email,
     avatar: profile.picture.replace(/\?.*$/, ''),
@@ -35,7 +35,7 @@ function handleGoogleLogin (req, res) {
   const id_token = authorizationHeader.split(' ')[1];
   authenticateUser(id_token).then(user => {
     // set session.
-    req.session.userId = user.googleId;
+    req.session.userId = user.userId;
     // do not redirect user to home page
     // cause we have to save user credentials.
     res.status(200).json({user: userObject(user)});

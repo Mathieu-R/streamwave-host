@@ -60,6 +60,7 @@
     "bcrypt": "^2.0.1",
     "command-line-args": "^5.0.2",
     "compression": "^1.7.2",
+    "connect-mongo": "^2.0.1",
     "connect-redis": "^3.3.3",
     "debounce": "^1.1.0",
     "events": "^3.0.0",

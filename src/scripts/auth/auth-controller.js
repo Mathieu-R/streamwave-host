@@ -1,5 +1,4 @@
 import Constants from '../constants';
-import '../../third_party/gapi';
 
 class Auth {
   constructor () {
