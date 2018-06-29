@@ -181,3 +181,44 @@
     margin: 0 10px;
   }
 }
+
+.chromecast {
+  &--connected {
+    display: none;
+  }
+
+  &--disconnected {
+    display: block;
+  }
+
+  &.connected {
+    .chromecast--connected {
+      display: block;
+    }
+
+    .chromecast--disconnected {
+      display: none;
+    }
+  }
+}
+
+.play-pause {
+  &--play {
+    display: block;
+  }
+
+  &--pause {
+    display: none;
+  }
+
+  &.playing {
+    .play-pause--play {
+      display: none;
+    }
+
+    .play-pause--paue {
+      display: block;
+    }
+  }
+}
+

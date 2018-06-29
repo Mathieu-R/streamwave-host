@@ -2,6 +2,7 @@ const {promisify} = require('util');
 const walk = require('walk');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 
 const ignores = [
   '.DS_Store',
@@ -16,11 +17,19 @@ const routes = [
   '/licences',
   '/about',
   '/demo',
-  new RegExp('/auth/'),
-  new RegExp('/album/'),
-  new RegExp('/playlist/'),
-  'https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.4.1/shaka-player.compiled.js'
+  '/auth/',
+  '/album/',
+  '/playlist/'
 ];
+
+const hash = path => {
+  const hashed = crypto
+    .createHash('sha256')
+    .update(fs.readFileSync(path))
+    .digest('hex');
+
+  return path.replace(/\.([^.]*?)$/, `.${hashed}.$1`);
+}
 
 const getResourcesList = () => {
   return new Promise((resolve, reject) => {
@@ -29,13 +38,22 @@ const getResourcesList = () => {
 
     walker.on("file", (root, stat, next) => {
       const filename = stat.name;
+      const diskFilePath = `${root}/${filename}`;
+      let filepath;
 
       if (ignores.includes(filename)) {
         next();
       }
 
-      root = root.replace('./dist', '');
-      const filepath = `${root}/${filename}`;
+      root = root.replace('./dist', '/static');
+
+      if (filename.endsWith('.js') ||
+        filename.endsWith('.css')
+      ) {
+        filepath = hash(diskFilePath).replace('./dist', '/static');
+      } else {
+        filepath = `${root}/${filename}`;
+      }
 
       resourcesList.push(filepath);
       next();

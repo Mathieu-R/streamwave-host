@@ -1,5 +1,4 @@
 const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('../mongoose');
 const production = process.env.NODE_ENV === 'production';

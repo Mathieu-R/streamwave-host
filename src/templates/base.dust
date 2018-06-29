@@ -1,10 +1,14 @@
 {>"partials/header" title=title style=style inlineStyle=inlineStyle /}
 <div class="app">
-  {>"partials/topbar-hamburger" /}
-  {>"components/side-nav" /}
-  {+section/}
-  {>"components/mini-player" /}
-  {>"components/side-nav" /}
+  <section class="home">
+    {>"partials/topbar-hamburger" /}
+    {>"components/side-nav" /}
+    {+section/}
+    <section class="home__mini-player-and-navbar-container">
+      {>"components/mini-player" /}
+      {>"components/navbar" /}
+    </section>
+  </section>
   <audio class="audio" preload="metadata"></audio>
   <div class="toast"></div>
 </div>

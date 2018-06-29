@@ -1,7 +1,7 @@
 const {promisify} = require('util');
 const redis = require('redis');
 const client = redis.createClient({
-  password: process.env.REDIS_PASSWORD
+  password: process.env.DATASTORE_PASSWORD
 });
 
 client.select(1);

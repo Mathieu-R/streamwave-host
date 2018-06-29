@@ -1,6 +1,6 @@
-<svg>
+<svg class="chromecast">
 
-  <svg fill="#FFFFFF" height="27" width="27" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
+  <svg class="chromecast--connected" fill="#FFFFFF" height="27" width="27" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none" opacity=".1"/>
     <path d="M0 0h24v24H0z" fill="none"/>
     <path
@@ -11,7 +11,7 @@
     />
   </svg>
 
-  <svg fill="#FFFFFF" height="27" width="27" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
+  <svg class="chromecast--disconnected" fill="#FFFFFF" height="27" width="27" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none" opacity=".1"/>
     <path d="M0 0h24v24H0z" fill="none"/>
     <path

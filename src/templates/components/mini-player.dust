@@ -13,7 +13,7 @@
   </section>
 
   <section class="mini-player__controls-container">
-    <button class="mini-player__button" disabled={!track} onClick={this.onPrevClick} aria-label="prev track">
+    <button class="mini-player__button" aria-label="prev track">
       <svg width="27px" height="22px" viewBox="0 0 37 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g id="Icons-Pattern-One" transform="translate(-709.000000, -286.000000)" fill="#FFF">
@@ -38,10 +38,10 @@
         </g>
       </svg>
     </button>
-    <button class="mini-player__button" disabled={!track} onClick={this.onPlayClick} aria-label="play or pause track">
+    <button class="mini-player__button" aria-label="play or pause track">
       {>"partials/play" /}
     </button>
-    <button class="mini-player__button" disabled={!track} onClick={this.onNextClick} aria-label="next track">
+    <button class="mini-player__button"aria-label="next track">
       <svg width="27px" height="22px" viewBox="0 0 36 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none">
           <g id="Icons-Pattern-One" transform="translate(-558.000000, -286.000000)" fill="#FFF">
