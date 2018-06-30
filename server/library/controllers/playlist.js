@@ -1,6 +1,5 @@
 const Playlist = require('../models/Playlist');
 const {Track} = require('../models/Track');
-const ws = require('../websocket');
 
 function getUserAllPlaylists (req, res) {
   Playlist.find({userId: req.user.id})
