@@ -78,8 +78,7 @@
           </g>
         </svg>
       </button>
-      <button class="player__centers-controls" aria-label="play or pause track">
-      {>"partials/play" /}
+      <button class="player__centers-controls player__play-pause player__play-pause--paused" aria-label="play or pause track">
       </button>
       <button class="player__centers-controls" aria-label="next track">
         <svg width="27px" height="22px" viewBox="0 0 36 22" version="1.1" xmlns="http://www.w3.org/2000/svg">

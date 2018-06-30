@@ -48,7 +48,8 @@ const getResourcesList = () => {
       root = root.replace('./dist', '/static');
 
       if (filename.endsWith('.js') ||
-        filename.endsWith('.css')
+        filename.endsWith('.css') ||
+        filename.endsWith('.json')
       ) {
         filepath = hash(diskFilePath).replace('./dist', '/static');
       } else {

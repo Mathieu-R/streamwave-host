@@ -180,6 +180,15 @@
     height: 20px;
     margin: 0 10px;
   }
+
+  &__play-pause {
+    background: url(/static/assets/svg/pause.svg) center center no-repeat;
+    background-size: 100% 100%;
+
+    &--paused {
+      background: url(/static/assets/svg/play.svg) center center no-repeat;
+    }
+  }
 }
 
 .chromecast {
@@ -201,24 +210,3 @@
     }
   }
 }
-
-.play-pause {
-  &--play {
-    display: block;
-  }
-
-  &--pause {
-    display: none;
-  }
-
-  &.playing {
-    .play-pause--play {
-      display: none;
-    }
-
-    .play-pause--paue {
-      display: block;
-    }
-  }
-}
-

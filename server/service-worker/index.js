@@ -16,7 +16,7 @@ const options = {
   ]
 };
 
-const package = JSON.parse(fs.readFileSync('package.json'));
+const package = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json')));
 const version = package['version'];
 
 app.engine('js', adaro.dust(options));
