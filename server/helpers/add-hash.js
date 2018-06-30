@@ -3,6 +3,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const readFile = promisify(fs.readFile);
+const join = require('path').join;
 
 function createHash(content) {
   return crypto
@@ -15,7 +16,7 @@ function hash(dust) {
   dust.helpers.hash = (chunk, context, bodies, params) => {
     return chunk.map(async chunk => {
       const path = params.path;
-      const content = await readFile(path);
+      const content = await readFile(join(__dirname, '../../', path));
       const hash = await createHash(content);
       const hashedPath = path
         .replace(/\/?dist/, '/static')
