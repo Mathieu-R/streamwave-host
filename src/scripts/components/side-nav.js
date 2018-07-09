@@ -20,18 +20,21 @@ class SideNav {
 
     this.sideNav = sideNav;
     this.overlay = document.querySelector('.overlay');
+    this.openButton = document.querySelector('.top-bar__button');
     this.closeButton = document.querySelector('.side-nav__hamburger');
 
     this.addEventListeners();
   }
 
   addEventListeners () {
+    console.log('lol')
     document.addEventListener('touchstart', this.onTouchStart);
     document.addEventListener('touchmove', this.onTouchMove);
     document.addEventListener('touchend', this.onTouchEnd);
 
     this.overlay.addEventListener('click', this.hideSideNav);
     this.sideNav.addEventListener('click', this.blockClick);
+    this.openButton.addEventListener('click', this.showSideNav);
     this.closeButton.addEventListener('click', this.close);
   }
 
@@ -42,22 +45,22 @@ class SideNav {
   }
 
   onTransitionEnd () {
-    this.container.classList.remove('side-nav--animatable');
-    this.container.removeEventListener('transitionend', this.onTransitionEnd);
+    this.sideNav.classList.remove('side-nav--animatable');
+    this.sideNav.removeEventListener('transitionend', this.onTransitionEnd);
   }
 
   showSideNav () {
     this.overlay.classList.add('overlay--visible');
-    this.container.classList.add('side-nav--animatable');
-    this.container.classList.add('side-nav--visible');
-    this.container.addEventListener('transitionend', this.onTransitionEnd);
+    this.sideNav.classList.add('side-nav--animatable');
+    this.sideNav.classList.add('side-nav--visible');
+    this.sideNav.addEventListener('transitionend', this.onTransitionEnd);
   }
 
   hideSideNav () {
     this.overlay.classList.remove('overlay--visible');
-    this.container.classList.add('side-nav--animatable');
-    this.container.classList.remove('side-nav--visible');
-    this.container.addEventListener('transitionend', this.onTransitionEnd);
+    this.sideNav.classList.add('side-nav--animatable');
+    this.sideNav.classList.remove('side-nav--visible');
+    this.sideNav.addEventListener('transitionend', this.onTransitionEnd);
   }
 
   blockClick (evt) {
@@ -65,7 +68,7 @@ class SideNav {
   }
 
   onTouchStart (evt) {
-    if (!(this.container.classList.contains('side-nav--visible'))) {
+    if (!(this.sideNav.classList.contains('side-nav--visible'))) {
       return;
     }
 
@@ -81,7 +84,7 @@ class SideNav {
 
     this.currentX = evt.touches[0].pageX;
     this.translateX = Math.min(0, this.currentX - this.startX);
-    this.container.style.transform = `translateX(${this.translateX}px)`;
+    this.sideNav.style.transform = `translateX(${this.translateX}px)`;
   }
 
   onTouchEnd () {
@@ -90,7 +93,7 @@ class SideNav {
     }
 
     this.dragging = false;
-    this.container.style.transform = '';
+    this.sideNav.style.transform = '';
 
     if (this.translateX < 0) {
       this.hideSideNav();

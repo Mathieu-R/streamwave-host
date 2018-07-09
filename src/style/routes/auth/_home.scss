@@ -46,7 +46,12 @@
   }
 
   &__google-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: $google-button-background;
+    color: #FFF;
+    font-size: 18px;
   }
 
   &__auth-link {

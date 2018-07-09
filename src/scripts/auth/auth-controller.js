@@ -8,28 +8,7 @@ class Auth {
     }
 
     this.googleButton = googleButton;
-
-    this.GOOGLE_CLIENT_ID = '518872171102-tpqle4q49rihv2atopm4c0uvnumochtd.apps.googleusercontent.com';
     this.autoSignOnConnect = this.autoSignOnConnect.bind(this);
-    this.googleLogin = this.googleLogin.bind(this);
-
-    this.initGapi();
-    this.addEventListeners();
-  }
-
-  initGapi () {
-    gapi.load('auth2', () => {
-      gapi.auth2.init({
-        client_id: this.GOOGLE_CLIENT_ID
-      }).then(() => {
-        console.log('[OAUTH2] gapi init.');
-        this.autoSignOnConnect().catch(err => console.error(err));
-      });
-    });
-  }
-
-  addEventListeners () {
-    this.googleButton.addEventListener('click', this.googleLogin);
   }
 
   async autoSignOnConnect () {
@@ -45,6 +24,7 @@ class Auth {
       });
 
       if (!credentials) return;
+
       if (credentials.type === 'password') {
         const response = await fetch(`/auth/local/login`, {
           method: 'POST',
@@ -60,48 +40,8 @@ class Auth {
       }
 
       if (credentials.type === 'federated') {
-        console.log(this);
-        this.googleLogin();
         return;
       }
-    }
-  }
-
-  googleLogin (evt) {
-    let gid = '';
-    const auth = gapi.auth2.getAuthInstance();
-    auth.signIn({
-      login_hint: gid || ''
-    }).then(profile => {
-      const token = profile.getAuthResponse().id_token;
-      return fetch(`/auth/google/login`, {
-        method: 'POST',
-        headers: {
-          'authorization': `Bearer ${token}`
-        }
-      });
-    })
-    .then(response => response.json())
-    .then(({user}) => {
-      this.storeFederatedCredentials(user).then(_ => {
-        location.href = '/';
-      });
-    })
-    .catch(err => console.error(err));
-  }
-
-  async storeFederatedCredentials (profile) {
-    if (Constants.SUPPORT_CREDENTIAL_MANAGEMENT_API) {
-      console.log(profile);
-      const credentials = await navigator.credentials.create({
-        federated: {
-          id: profile.id,
-          provider: 'https://accounts.google.com',
-          name: profile.username,
-          iconURL: profile.avatar
-        }
-      });
-      return navigator.credentials.store(credentials);
     }
   }
 }

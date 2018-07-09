@@ -10,9 +10,17 @@ const oauth2client = new OAuth2Client(
   production ? process.env.GOOGLECALLBACKPROD : process.env.GOOGLECALLBACKDEV
 );
 
-async function authenticateUser (token) {
+const authorizeURL = oauth2client.generateAuthUrl({
+  access_type: 'offline',
+  scope: ['openid', 'email', 'profile']
+});
+
+async function authenticateUser (code) {
+  const {tokens} = await oauth2client.getToken(code);
+  //console.log(tokens);
+  await oauth2client.setCredentials(tokens);
   const loginTicket = await oauth2client.verifyIdToken({
-    idToken: token,
+    idToken: tokens.id_token,
     audience: process.env.GOOGLEID
   });
   const profile = loginTicket.getPayload();
@@ -31,19 +39,22 @@ async function authenticateUser (token) {
 }
 
 function handleGoogleLogin (req, res) {
-  const authorizationHeader = req.headers.authorization;
-  const id_token = authorizationHeader.split(' ')[1];
-  authenticateUser(id_token).then(user => {
+  res.redirect(authorizeURL);
+}
+
+function handleGoogleCallback (req, res) {
+  const {code} = req.query;
+  authenticateUser(code).then(user => {
     // set session.
     req.session.userId = user.userId;
-    // do not redirect user to home page
-    // cause we have to save user credentials.
-    res.status(200).json({user: userObject(user)});
+    res.redirect('/');
   }).catch(err => {
+    console.error(err);
     res.status(500).send(`Auth failed. ${err.message}`);
   });
 }
 
 module.exports = {
-  handleGoogleLogin
+  handleGoogleLogin,
+  handleGoogleCallback
 }

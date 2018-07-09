@@ -18,9 +18,9 @@
           Créer un compte
         </a>
       </button>
-      <button class="auth-home__google-button" aria-label="login with your google account">
+      <a class="auth-home__google-button" href="auth/google/login" aria-label="login with your google account">
         Continuer avec google
-      </button>
+      </a>
       <a class="link-button auth-home__password-reset-link" href="/auth/forgot" aria-label="go to password reset page">
         Mot de passe oublié ?
       </a>
