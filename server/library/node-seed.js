@@ -1,12 +1,13 @@
 const fs = require('fs');
-const seed = JSON.parse(fs.readFileSync('./seed.json'));
+const path = require('path');
+const seed = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed.json')));
 const {insertAlbums} = require('./seed');
 
 insertAlbums(seed)
   .then(albums => {
-    process.exit(1);
+    process.exit(0);
   })
   .catch(err => {
     console.error(err);
-    process.exit(0);
+    process.exit(1);
   });

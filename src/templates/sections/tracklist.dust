@@ -35,9 +35,6 @@
         <div class="track__number">{number}</div>
         <div class="track__title">{title}</div>
         <div class="track__duration">{duration|duration}</div>
-        {?type === 'playlist'}
-          <button class="track__remove"></button>
-        {/type}
       </div>
     {/tracks}
   </section>

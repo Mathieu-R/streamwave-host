@@ -9,7 +9,7 @@ module.exports = session({
     mongooseConnection: mongoose.connection
   }),
   cookie: {
-    maxAge: 1000 * 60 * 60 * 12, // 12h
+    maxAge: 1000 * 60 * 60 * 24 * 30,
     secure: production ? true : false,
     httpOnly: true
   },

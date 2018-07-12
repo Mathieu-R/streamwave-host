@@ -21,7 +21,6 @@ function main (path) {
 function medianCut (source) {
   return promisify(getPixels)(source)
     .then(pixels => {
-      console.log(pixels);
       return pixelsRGB(pixels)
     })
     .then(pixels => quantize(pixels, 0))

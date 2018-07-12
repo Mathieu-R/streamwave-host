@@ -39,10 +39,9 @@ const viewOptions = {
 
 // view options when user
 // is authenticated in the app
-const appViewOptions = (req) => ({
-  ...viewOptions, ...{
-    user: req.user
-  }
+const appViewOptions = (user) => ({
+  ...viewOptions,
+  user
 });
 
 app.engine('dust', adaro.dust(options));
@@ -77,7 +76,18 @@ app.get('/', auth, (req, res) => {
       ...viewOptions,
       user: req.user,
       library,
-      cdnurl: CDN_URL
+      cdn: CDN_URL
+    });
+  });
+});
+
+app.get('/album/:id', auth, (req, res) => {
+  getAlbum(req, res).then(album => {
+    res.status(200).render('sections/tracklist', {
+      ...appViewOptions(req.user),
+      title: `Streamwave - ${album.title}`,
+      album,
+      cdn: CDN_URL
     });
   });
 });

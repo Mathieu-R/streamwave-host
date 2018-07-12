@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run build-css && npm run copy && concurrently \"npm run watch-js\" \"npm run watch-css\"",
     "server": "nodemon --inspect server/index.js",
+    "seed": "node server/library/node-seed.js",
     "clean-css": "node build/clean-css",
     "create-css-folder": "mkdirp ./dist/css",
     "copy": "copy src/assets dist/assets && copy src/third_party dist/third_party && cp-cli src/manifest.json dist/manifest.json && cp-cli src/sw.js dist/sw.js",
