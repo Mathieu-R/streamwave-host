@@ -7,7 +7,7 @@
       <img class="side-nav__avatar" src={user.avatar} alt="avatar" />
       <div class="side-nav__infos">
         <p class="side-nav__username">{user.username}</p>
-        <p class="side-nav__mail">{?user.email}{user.email}{/user.email}}</p>
+        <p class="side-nav__mail">{?user.email}{user.email}{/user.email}</p>
       </div>
     </div>
     <ul class="side-nav__menu">

@@ -31,7 +31,7 @@ const options = {
 
 // basic view options
 const viewOptions = {
-  title: 'Streamwave',
+  tabTitle: 'Streamwave',
   styles: ['dist/css/streamwave.css'],
   inlineStyle,
   scripts: ['dist/scripts/bundle.js']
@@ -85,8 +85,8 @@ app.get('/album/:id', auth, (req, res) => {
   getAlbum(req, res).then(album => {
     res.status(200).render('sections/tracklist', {
       ...appViewOptions(req.user),
-      title: `Streamwave - ${album.title}`,
-      album,
+      tabTitle: `Streamwave - ${album.title}`,
+      ...album,
       cdn: CDN_URL
     });
   });

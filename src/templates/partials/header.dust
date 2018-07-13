@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <title>{title}</title>
+  <title>{tabTitle}</title>
   <meta charset="utf-8">
   <meta name="author" content="Mathieu Rousseau">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">

@@ -28,6 +28,10 @@ class Streamwave {
     // 1. select all images to lazy-load
     const artworks = Array.from(document.querySelectorAll('.cover__artwork'));
 
+    if (artworks.length === 0) {
+      return;
+    }
+
     // 2. detect IO feature
     if (Constants.SUPPORT_INTERSECTION_OBSERVER) {
       const config = {

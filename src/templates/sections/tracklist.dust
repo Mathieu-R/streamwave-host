@@ -1,7 +1,7 @@
 {>"base"/}
 
 {<section}
-<div class="tracklist">
+<div class="tracklist" data-album="{title}">
   <section class="tracklist__infos">
     <div class="tracklist__infos-wrapper">
       {?coverURL}
@@ -11,11 +11,11 @@
         <div class="tracklist__title">{title}</div>
         <div class="tracklist__artist">{artist}</div>
         <div class="tracklist__line">
-          <span class="tracklist__year">{?year}year{/year}{:else}année de parution inconnue</span>
+          <span class="tracklist__year">{?year}year{/year}</span>
           •
           <span class="tracklist__tracks-counter">{tracks.length|pluralize}</span>
           •
-          <span class="tracklist__genre">{?genre}genre{/genre}{:else}genre inconnu</span>
+          <span class="tracklist__genre">{?genre}genre{/genre}</span>
         </div>
       </div>
     </div>
@@ -31,7 +31,18 @@
   </section>
   <section class="tracklist__tracks">
     {#tracks}
-      <div class="track" data-manifest="{manifest}">
+      <div class="track"
+        data-id="{_id}"
+        data-manifest="{manifestURL}"
+        data-playlistHLS="{playlistHLSURL}"
+        data-number="{number}"
+        data-title="{title}"
+        data-cover="{coverURL}"
+        data-duration="{duration}"
+        data-audio128="{audio128URL}"
+        data-audio128="{audio192URL}"
+        data-audio128="{audio256URL}"
+      >
         <div class="track__number">{number}</div>
         <div class="track__title">{title}</div>
         <div class="track__duration">{duration|duration}</div>

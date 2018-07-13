@@ -21,6 +21,7 @@ class Player {
     this.castProxy = null;
     this.skipTime = 15;
 
+    this.onTrackClick = this.onTrackClick.bind(this);
     this.listen = this.listen.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
@@ -33,6 +34,12 @@ class Player {
     this.changeVolume = this.changeVolume.bind(this);
     this.trackTimeUpdate = this.trackTimeUpdate.bind(this);
     this.seek = this.seek.bind(this);
+
+    this.tracklist = document.querySelector('.tracklist');
+
+    Array.from(document.querySelectorAll('.track')).forEach(track => {
+      track.addEventListener('click', this.onTrackClick);
+    });
 
     this.initShakaPlayer();
     this.initMediaSession();
@@ -92,7 +99,7 @@ class Player {
 
         // bytes downloaded
         const value = response.data.byteLength;
-        // update idb cache to save the user data volume consumed
+        // update idb cache to save the data volume consumed
          updateDataVolumeDebounced(value);
          // fire an event for live-update
          const evt = new CustomEvent('data-volume', {
@@ -127,6 +134,21 @@ class Player {
     this.chromecaster = new Chromecaster(this.castProxy);
   }
 
+  onTrackClick (evt) {
+    const album = this.tracklist.dataset.album;
+
+    const {
+      manifest,
+      playlistHLS,
+      number,
+      title,
+      cover,
+      duration
+    } = evt.target.dataset;
+
+    this.listen(manifest, playlistHLS, {artist, album, title, cover});
+  }
+
   /**
    * Stream an audio with DASH (thanks to shaka-player) or HLS (if dash not supported)
    * @param {String} manifest manifest url
@@ -134,7 +156,7 @@ class Player {
    * @param {Object} trackInfos {artist, album, title, coverURL}
    * @param {Boolean} play play/pause media
    */
-  async listen (manifest, m3u8playlist, trackInfos, play) {
+  async listen (manifest, m3u8playlist, trackInfos, play = true) {
     // update chromecast receiver UI (if needed)
     this.chromecaster.updateReceiverUI();
     const limit = await this.settings.get('limit-data');
@@ -172,7 +194,7 @@ class Player {
     this.play().then(_ => this.setMediaNotifications(trackInfos));
   }
 
-  setMediaNotifications ({artist, album, title, coverURL}) {
+  setMediaNotifications ({artist, album, title, cover}) {
     if (!Constants.SUPPORT_MEDIA_SESSION_API) {
       return;
     }
@@ -182,15 +204,13 @@ class Player {
       album,
       title,
       artwork: [
-        {src: `${Constants.CDN_URL}/${coverURL}`, sizes: '256x256', type: 'image/png'},
-        {src: `${Constants.CDN_URL}/${coverURL}`, sizes: '512x512', type: 'image/png'}
+        {src: `${Constants.CDN_URL}/${cover}`, sizes: '256x256', type: 'image/png'},
+        {src: `${Constants.CDN_URL}/${cover}`, sizes: '512x512', type: 'image/png'}
       ]
     });
   }
 
   onPlayClick ({playing}) {
-    // TODO: change play button
-    // update audio
     playing ? this.pause() : this.play();
   }
 
