@@ -8,7 +8,7 @@ import {
 
 export default () => {
   if (Constants.SUPPORT_SERVICE_WORKER) {
-    navigator.serviceWorker.register('/static/service-worker.js', {scope: '/'}).then(registration => {
+    navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(registration => {
       if (Constants.SUPPORT_PUSH_NOTIFICATIONS) {
         const pusher = new Pusher();
         pusher.init();

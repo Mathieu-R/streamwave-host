@@ -3,7 +3,7 @@ importScripts('{@hash path="dist/cache-manifest.js"}{/hash}');
 
 const CACHENAME = 'static';
 const VERSION = '{version}';
-const CACHE_MANIFEST_NAME = `${CACHENAME}-v${VERSION}`;
+const CACHE_MANIFEST_NAME = CACHENAME + '-v' + VERSION; //`${CACHENAME}-v${VERSION}`
 const MUSIC_CACHE_NAME = 'streamwave-music-cache';
 
 
