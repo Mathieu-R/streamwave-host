@@ -1,4 +1,4 @@
-importScripts('{@hash path="dist/third_party/idb-keyval.min.js}{/hash}');
+importScripts('{@hash path="dist/third_party/idb-keyval.min.js"}{/hash}');
 importScripts('{@hash path="dist/cache-manifest.js"}{/hash}');
 
 const CACHENAME = 'static';
